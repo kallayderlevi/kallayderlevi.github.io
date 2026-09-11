@@ -6,7 +6,7 @@ export default function Hero() {
     <section id="top" className="relative mx-auto max-w-7xl px-6 pb-16 pt-16 lg:px-8 lg:pb-24 lg:pt-20">
       <div className="grid items-start gap-12 lg:grid-cols-[1.1fr_0.9fr] lg:gap-16">
         <div className="max-w-3xl">
-          <span className="inline-flex items-center gap-2 rounded-full border border-emerald-600/15 bg-emerald-50 px-4 py-2 text-xs font-semibold uppercase section-kicker text-emerald-700">
+          <span className="inline-flex border-l-2 border-[#73b744] pl-3 text-xs font-semibold uppercase section-kicker text-[#5d9f35]">
             {t('branch')}
           </span>
           <h1 className="mt-6 max-w-2xl text-4xl font-semibold tracking-tight text-slate-900 sm:text-5xl lg:text-6xl">
@@ -16,7 +16,7 @@ export default function Hero() {
             {t('heroCopy')}
           </p>
 
-          <div className="mt-8 inline-flex items-center gap-3 rounded-full border border-slate-200 bg-white px-4 py-2 text-sm text-slate-600 shadow-sm">
+          <div className="mt-8 flex items-center gap-3 border-l-2 border-[#73b744] pl-4 text-sm text-slate-600">
             <span className="h-2 w-2 rounded-full bg-emerald-600" />
             A new chapter, built with the tone of an established consulting team.
           </div>
@@ -36,10 +36,10 @@ export default function Hero() {
             </a>
           </div>
 
-          <div className="mt-8 flex flex-wrap gap-3 text-sm text-slate-500">
-            <span className="rounded-full border border-slate-200 bg-white px-4 py-2">{t('strategy')}</span>
-            <span className="rounded-full border border-slate-200 bg-white px-4 py-2">{t('development')}</span>
-            <span className="rounded-full border border-slate-200 bg-white px-4 py-2">{t('network')}</span>
+          <div className="mt-8 flex flex-wrap items-center gap-x-4 gap-y-2 text-sm text-slate-500">
+            <span>{t('strategy')}</span><span className="text-[#73b744]">/</span>
+            <span>{t('development')}</span><span className="text-[#73b744]">/</span>
+            <span>{t('network')}</span>
           </div>
         </div>
 
