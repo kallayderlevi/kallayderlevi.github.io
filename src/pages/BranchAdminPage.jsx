@@ -31,6 +31,7 @@ function ImageField({ value, onChange }) {
 
 function PersonFields({ person, onChange, onRemove }) {
   const update = (field, value) => onChange({ ...person, [field]: value })
+  const imageClass = `${person.imageFit === 'contain' ? 'object-contain bg-slate-100' : 'object-cover'} ${person.imagePosition === 'top' ? 'object-top' : person.imagePosition === 'bottom' ? 'object-bottom' : 'object-center'}`
 
   return (
     <article className="rounded-2xl border border-slate-200 bg-white p-5">
@@ -40,6 +41,9 @@ function PersonFields({ person, onChange, onRemove }) {
         <label className="grid gap-2 text-sm text-slate-700 sm:col-span-2">Background<textarea rows="3" value={person.background} onChange={(event) => update('background', event.target.value)} className="rounded-xl border border-slate-200 px-3 py-2" /></label>
         <label className="grid gap-2 text-sm text-slate-700">Email<input type="email" value={person.email} onChange={(event) => update('email', event.target.value)} className="rounded-xl border border-slate-200 px-3 py-2" /></label>
         <ImageField value={person.image} onChange={(value) => update('image', value)} />
+        <label className="grid gap-2 text-sm text-slate-700">Photo fit<select value={person.imageFit || 'cover'} onChange={(event) => update('imageFit', event.target.value)} className="rounded-xl border border-slate-200 px-3 py-2"><option value="cover">Fill frame</option><option value="contain">Show full photo</option></select></label>
+        <label className="grid gap-2 text-sm text-slate-700">Photo position<select value={person.imagePosition || 'center'} onChange={(event) => update('imagePosition', event.target.value)} className="rounded-xl border border-slate-200 px-3 py-2"><option value="top">Top</option><option value="center">Center</option><option value="bottom">Bottom</option></select></label>
+        {person.image && <img src={person.image} alt="Photo preview" className={`h-32 w-full rounded-xl ${imageClass} sm:col-span-2`} />}
       </div>
       {onRemove && <button type="button" onClick={onRemove} className="mt-4 text-sm font-semibold text-red-600 hover:text-red-700">Remove member</button>}
     </article>

@@ -1,5 +1,5 @@
 export const defaultBoard = [
-  { id: 'president', role: 'President', name: 'Founding team member', background: 'Chapter leadership, strategy, and external representation.', email: 'budapest@180dc.org', image: '' },
+  { id: 'president', role: 'President', name: 'Founding team member', background: 'Chapter leadership, strategy, and external representation.', email: 'budapest@180dc.org', image: '', imageFit: 'cover', imagePosition: 'center' },
   { id: 'vice-president', role: 'Vice President', name: 'Founding team member', background: 'Internal coordination, planning, and chapter development.', email: 'budapest@180dc.org', image: '' },
   { id: 'client-relations', role: 'Director of Client Relations', name: 'Founding team member', background: 'Client conversations, project scoping, and relationship management.', email: 'budapest@180dc.org', image: '' },
   { id: 'partnerships', role: 'Director of Partnerships', name: 'Founding team member', background: 'University, corporate, and community partnerships.', email: 'budapest@180dc.org', image: '' },

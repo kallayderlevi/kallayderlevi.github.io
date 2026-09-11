@@ -8,7 +8,7 @@ const imageUrl = (value) => {
   return storage.getFileView({ bucketId: appwriteConfig.mediaBucketId, fileId: value }).toString()
 }
 
-const mapPerson = (row) => ({ id: row.$id, ...row, image: imageUrl(row.image || row.imageFileId) })
+const mapPerson = (row) => ({ id: row.$id, imageFit: 'cover', imagePosition: 'center', ...row, image: imageUrl(row.image || row.imageFileId) })
 const mapPost = (row) => ({ id: row.$id, ...row, copy: row.copy || row.summary || '', date: row.date || row.publishedAt || '' })
 
 async function listRows(tableId, mapper) {
@@ -34,11 +34,11 @@ async function saveRows(tableId, rows, kind) {
   const incomingIds = new Set(rows.map((row) => row.id))
   await Promise.all(existing.filter((row) => !incomingIds.has(row.id)).map((row) => tables.deleteRow({ databaseId: appwriteConfig.databaseId, tableId, rowId: row.id })))
 
-  return Promise.all(rows.map(({ id, $id, $createdAt, $updatedAt, $permissions, $databaseId, $tableId, image, copy, date, ...rest }) => {
+  return Promise.all(rows.map(({ id, $id, $createdAt, $updatedAt, $permissions, $databaseId, $tableId, image, imageFit, imagePosition, copy, date, ...rest }) => {
     const rowId = id || ID.unique()
     const data = kind === 'post'
       ? { title: rest.title, summary: copy, published: 'true', publishedAt: date || new Date().toISOString() }
-      : { ...rest, imageFileId: image || '' }
+      : { ...rest, imageFileId: image || '', imageFit: imageFit || 'cover', imagePosition: imagePosition || 'center' }
     const params = { databaseId: appwriteConfig.databaseId, tableId, rowId, data }
     return existing.some((row) => row.id === id) ? tables.updateRow(params) : tables.createRow(params)
   }))

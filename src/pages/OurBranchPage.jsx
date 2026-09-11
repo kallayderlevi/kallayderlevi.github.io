@@ -2,6 +2,9 @@ import { useBranchContent } from '../hooks/useBranchContent'
 
 export default function OurBranchPage() {
   const { board, consultants } = useBranchContent()
+  const photoClass = (member, fallback) => member.image
+    ? `${member.imageFit === 'contain' ? 'object-contain bg-slate-100' : 'object-cover'} ${member.imagePosition === 'top' ? 'object-top' : member.imagePosition === 'bottom' ? 'object-bottom' : 'object-center'} ${fallback}`
+    : fallback
 
   return (
     <section className="mx-auto max-w-7xl px-6 py-20 lg:px-8 lg:py-24">
@@ -48,7 +51,7 @@ export default function OurBranchPage() {
               <img
                 src={member.image || '/brand/globe-green.png'}
                 alt={member.image ? member.name : ''}
-                className={member.image ? 'h-full w-full object-cover' : 'h-24 w-24 object-contain opacity-90 transition duration-300 group-hover:scale-105'}
+                className={photoClass(member, member.image ? 'h-full w-full' : 'h-24 w-24 object-contain opacity-90 transition duration-300 group-hover:scale-105')}
               />
             </div>
             <div className="p-5">
@@ -71,7 +74,7 @@ export default function OurBranchPage() {
             {consultants.map((member) => (
               <article key={member.id} className="overflow-hidden rounded-[1.75rem] border border-slate-200 bg-white shadow-glow">
                 <div className="flex h-40 items-center justify-center bg-slate-950">
-                  <img src={member.image || '/brand/globe-green.png'} alt={member.image ? member.name : ''} className={member.image ? 'h-full w-full object-cover' : 'h-20 w-20 object-contain'} />
+                  <img src={member.image || '/brand/globe-green.png'} alt={member.image ? member.name : ''} className={photoClass(member, member.image ? 'h-full w-full' : 'h-20 w-20 object-contain')} />
                 </div>
                 <div className="p-5">
                   <p className="text-xs font-semibold uppercase section-kicker text-emerald-700">{member.role}</p>
