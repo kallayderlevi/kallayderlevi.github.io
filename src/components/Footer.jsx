@@ -22,7 +22,8 @@ export default function Footer() {
             className="h-16 w-auto max-w-[270px] object-contain object-left"
           />
           <p className="mt-2 text-sm text-slate-500">Branch of 180 Degrees Consulting. Built for social impact.</p>
-          <div className="mt-4">
+          <p className="mt-4 text-xs font-semibold uppercase tracking-[0.2em] text-[#5d9f35]">Follow 180DC Budapest</p>
+          <div className="mt-3">
             <SocialLinks compact />
           </div>
         </div>

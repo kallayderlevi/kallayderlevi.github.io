@@ -14,7 +14,8 @@ export default function ContactPage() {
           <p><span className="block text-slate-500">Email</span> budapest@180dc.org</p>
           <p><span className="block text-slate-500">Location</span> Budapest, Hungary</p>
           <div>
-            <span className="block text-slate-500">Find us online</span>
+            <span className="block text-sm font-semibold text-slate-900">Follow 180DC Budapest</span>
+            <span className="block text-slate-500">Find us on social media</span>
             <div className="mt-3">
               <SocialLinks />
             </div>
