@@ -8,6 +8,12 @@
   </head>
   <body>
     <div id="root"></div>
+    <script>
+      if (window.location.search.startsWith('?/')) {
+        const route = window.location.search.slice(1).replace(/~and~/g, '&')
+        window.history.replaceState(null, '', route + window.location.hash)
+      }
+    </script>
     <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>

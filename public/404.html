@@ -1,0 +1,16 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>180DC Budapest</title>
+    <script>
+      const path = window.location.pathname
+      const query = window.location.search
+      const hash = window.location.hash
+      if (!query.startsWith('?/')) {
+        window.location.replace(`${window.location.origin}/?/${path.slice(1)}${hash}`)
+      }
+    </script>
+  </head>
+  <body></body>
+</html>
