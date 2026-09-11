@@ -43,6 +43,7 @@ function PersonFields({ person, onChange, onRemove }) {
         <ImageField value={person.image} onChange={(value) => update('image', value)} />
         <label className="grid gap-2 text-sm text-slate-700">Photo fit<select value={person.imageFit || 'cover'} onChange={(event) => update('imageFit', event.target.value)} className="rounded-xl border border-slate-200 px-3 py-2"><option value="cover">Fill frame</option><option value="contain">Show full photo</option></select></label>
         <label className="grid gap-2 text-sm text-slate-700">Photo position<select value={person.imagePosition || 'center'} onChange={(event) => update('imagePosition', event.target.value)} className="rounded-xl border border-slate-200 px-3 py-2"><option value="top">Top</option><option value="center">Center</option><option value="bottom">Bottom</option></select></label>
+        <label className="grid gap-2 text-sm text-slate-700">Order<input type="number" min="1" value={person.sortOrder || ''} onChange={(event) => update('sortOrder', event.target.value)} className="rounded-xl border border-slate-200 px-3 py-2" /></label>
         {person.image && <img src={person.image} alt="Photo preview" className={`h-32 w-full rounded-xl ${imageClass} sm:col-span-2`} />}
       </div>
       {onRemove && <button type="button" onClick={onRemove} className="mt-4 text-sm font-semibold text-red-600 hover:text-red-700">Remove member</button>}
@@ -145,15 +146,15 @@ export default function BranchAdminPage() {
         <section>
           <div className="mb-5 flex items-end justify-between gap-4">
             <div><p className="text-xs font-semibold uppercase section-kicker text-slate-500">Executive committee</p><h2 className="mt-2 text-2xl font-semibold text-slate-900">Board members</h2></div>
-            <button type="button" onClick={() => setContent({ ...content, board: [...content.board, { id: `board-${Date.now()}`, role: 'New executive role', name: 'New member', background: '', email: 'budapest@180dc.org', image: '' }] })} className="rounded-full border border-slate-200 px-4 py-2 text-sm font-semibold text-slate-700 hover:bg-white">Add board member</button>
+            <button type="button" onClick={() => setContent({ ...content, board: [...content.board, { id: `board-${Date.now()}`, role: 'New executive role', name: 'New member', background: '', email: 'budapest@180dc.org', image: '', imageFit: 'cover', imagePosition: 'center', sortOrder: String(content.board.length + 1) }] })} className="rounded-full border border-slate-200 px-4 py-2 text-sm font-semibold text-slate-700 hover:bg-white">Add board member</button>
           </div>
-          <div className="grid gap-5 lg:grid-cols-2">
+          <p className="mb-4 text-sm text-slate-500">Use the Order field to control the public sequence. Lower numbers appear first.</p><div className="grid gap-5 lg:grid-cols-2">
             {content.board.map((person, index) => <PersonFields key={person.id} person={person} onChange={(value) => updateBoard(index, value)} onRemove={() => setContent({ ...content, board: content.board.filter((_, itemIndex) => itemIndex !== index) })} />)}
           </div>
         </section>
 
         <section>
-          <div className="mb-5 flex items-end justify-between gap-4"><div><p className="text-xs font-semibold uppercase section-kicker text-slate-500">Additional team</p><h2 className="mt-2 text-2xl font-semibold text-slate-900">Consultants</h2></div><button type="button" onClick={() => setContent({ ...content, consultants: [...content.consultants, { id: `consultant-${Date.now()}`, role: 'Consultant', name: 'New consultant', background: '', email: 'budapest@180dc.org', image: '' }] })} className="rounded-full border border-slate-200 px-4 py-2 text-sm font-semibold text-slate-700 hover:bg-white">Add consultant</button></div>
+          <div className="mb-5 flex items-end justify-between gap-4"><div><p className="text-xs font-semibold uppercase section-kicker text-slate-500">Additional team</p><h2 className="mt-2 text-2xl font-semibold text-slate-900">Consultants</h2></div><button type="button" onClick={() => setContent({ ...content, consultants: [...content.consultants, { id: `consultant-${Date.now()}`, role: 'Consultant', name: 'New consultant', background: '', email: 'budapest@180dc.org', image: '', imageFit: 'cover', imagePosition: 'center', sortOrder: String(content.consultants.length + 1) }] })} className="rounded-full border border-slate-200 px-4 py-2 text-sm font-semibold text-slate-700 hover:bg-white">Add consultant</button></div>
           <div className="grid gap-5 lg:grid-cols-2">{content.consultants.map((person, index) => <PersonFields key={person.id} person={person} onChange={(value) => updateConsultant(index, value)} onRemove={() => setContent({ ...content, consultants: content.consultants.filter((_, itemIndex) => itemIndex !== index) })} />)}</div>
           {content.consultants.length === 0 && <p className="rounded-2xl border border-dashed border-slate-300 p-6 text-sm text-slate-500">No consultants added yet.</p>}
         </section>
