@@ -16,7 +16,7 @@ export default function Navbar() {
 
   return (
     <header className="sticky top-0 z-50 border-b border-slate-200/80 bg-white/90 backdrop-blur-md">
-      <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-3 sm:px-6 lg:px-8">
+      <div className="mx-auto flex min-h-[4.5rem] max-w-7xl items-center justify-between gap-3 px-4 py-2 sm:px-6 lg:px-8">
         <nav className="hidden items-center gap-6 lg:flex">
           {links.map((link) => (
             <NavLink
@@ -46,11 +46,11 @@ export default function Navbar() {
           </a>
         </div>
 
-        <NavLink to="/" className="order-last ml-auto flex shrink-0 items-center">
+        <NavLink to="/" className="order-last ml-auto flex min-w-0 shrink items-center">
           <img
             src="/brand/logo-budapest-full.png"
             alt="180 Degrees Consulting Budapest"
-            className="h-20 w-auto max-w-[250px] object-contain object-right sm:h-[5.5rem] sm:max-w-[330px]"
+            className="h-16 w-auto max-w-[190px] object-contain object-right sm:h-[5.5rem] sm:max-w-[330px]"
           />
         </NavLink>
 

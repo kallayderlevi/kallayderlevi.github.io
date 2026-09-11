@@ -80,7 +80,7 @@ export default function BranchAdminPage() {
     account.createEmailPasswordSession({ email, password }).then(() => {
       setLoggedIn(true)
       setError('')
-    }).catch(() => setError('Login failed. Check your Appwrite email and password.'))
+    }).catch((loginError) => setError(`Login failed: ${loginError.message || 'check your Appwrite email and password.'}`))
   }
 
   const updateBoard = (index, person) => setContent({ ...content, board: content.board.map((item, itemIndex) => itemIndex === index ? person : item) })
@@ -105,7 +105,7 @@ export default function BranchAdminPage() {
         <div className="rounded-[2rem] border border-slate-200 bg-white p-8 shadow-glow sm:p-10">
           <p className="text-xs font-semibold uppercase section-kicker text-slate-500">Private area</p>
           <h1 className="mt-4 text-3xl font-semibold text-slate-900">Branch admin</h1>
-          <p className="mt-4 text-sm leading-7 text-slate-600">Manage the board, consultants, and blog updates.</p>
+          <p className="mt-4 text-sm leading-7 text-slate-600">Use the Appwrite email and password created under Auth → Users.</p>
           <form onSubmit={login} className="mt-8 grid gap-4">
             <label className="grid gap-2 text-sm text-slate-700">Email<input type="email" value={email} onChange={(event) => setEmail(event.target.value)} className="rounded-xl border border-slate-200 px-3 py-3" autoFocus /></label>
             <label className="grid gap-2 text-sm text-slate-700">Password<input type="password" value={password} onChange={(event) => setPassword(event.target.value)} className="rounded-xl border border-slate-200 px-3 py-3" /></label>
