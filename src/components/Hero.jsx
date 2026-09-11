@@ -47,7 +47,7 @@ export default function Hero() {
             <img
               src="/brand/logo-full-white.png"
               alt="180 Degrees Consulting Budapest"
-              className="h-20 w-auto max-w-[220px] shrink-0 object-contain object-left"
+              className="h-20 w-auto max-w-[220px] shrink-0 object-contain object-left mix-blend-screen"
             />
             <div>
               <p className="text-xs font-semibold uppercase section-kicker text-white">One network</p>

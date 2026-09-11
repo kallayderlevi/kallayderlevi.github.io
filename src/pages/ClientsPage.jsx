@@ -1,3 +1,5 @@
+import PageBanner from '../components/PageBanner'
+
 const serviceGroups = [
   {
     title: 'Strategy',
@@ -20,24 +22,12 @@ const serviceGroups = [
 export default function ClientsPage() {
   return (
     <section className="mx-auto max-w-7xl px-6 py-20 lg:px-8 lg:py-24">
-      <div className="overflow-hidden rounded-[2.5rem] bg-[#73b744] text-white shadow-glow">
-        <div className="relative grid gap-10 overflow-hidden px-8 py-10 sm:px-12 sm:py-14 lg:grid-cols-[1fr_0.6fr] lg:items-center">
-          <div className="absolute -right-28 -top-36 h-96 w-96 rounded-full border-[36px] border-white/15" />
-          <div className="relative">
-            <p className="text-xs font-semibold uppercase section-kicker text-white/80">Client services</p>
-            <h1 className="mt-4 max-w-3xl text-4xl font-semibold tracking-tight sm:text-5xl">
-              Practical consulting for organisations creating a better future.
-            </h1>
-            <p className="mt-5 max-w-2xl text-lg leading-8 text-white/90">
-              We work with organisations of every size, from social enterprises with under five employees to
-              international non-profits with more than 1,000 people.
-            </p>
-          </div>
-          <div className="relative hidden justify-end lg:flex">
-            <img src="/brand/globe-green.png" alt="" className="h-52 w-52 object-contain brightness-0 invert opacity-90" />
-          </div>
-        </div>
-      </div>
+      <PageBanner
+        eyebrow="Client services"
+        title="Practical consulting for organisations creating a better future."
+        copy="We work with organisations of every size, from social enterprises with under five employees to international non-profits with more than 1,000 people."
+        tone="clients"
+      />
 
       <div className="mt-12 grid gap-8 lg:grid-cols-[1.05fr_0.95fr] lg:items-end">
         <div className="max-w-3xl">

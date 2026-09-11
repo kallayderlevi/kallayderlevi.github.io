@@ -1,3 +1,5 @@
+import PageBanner from '../components/PageBanner'
+
 const timeline = [
   {
     label: 'Application',
@@ -43,24 +45,12 @@ const benefits = [
 export default function StudentsPage() {
   return (
     <section className="mx-auto max-w-7xl px-6 py-20 lg:px-8 lg:py-24">
-      <div className="overflow-hidden rounded-[2.5rem] bg-[#73b744] text-white shadow-glow">
-        <div className="relative grid gap-10 overflow-hidden px-8 py-10 sm:px-12 sm:py-14 lg:grid-cols-[1fr_0.55fr] lg:items-center">
-          <div className="absolute -bottom-40 -right-10 h-80 w-80 rounded-full border-[34px] border-white/15" />
-          <div className="relative">
-            <p className="text-xs font-semibold uppercase section-kicker text-white/80">Students</p>
-            <h1 className="mt-4 max-w-3xl text-4xl font-semibold tracking-tight sm:text-5xl">
-              Your semester at 180DC Budapest.
-            </h1>
-            <p className="mt-5 max-w-2xl text-lg leading-8 text-white/90">
-              Learn by doing, work with purpose, and grow with a team of people who want to make consulting more
-              meaningful.
-            </p>
-          </div>
-          <div className="relative hidden justify-end lg:flex">
-            <img src="/brand/globe-green.png" alt="" className="h-56 w-56 object-contain brightness-0 invert opacity-90" />
-          </div>
-        </div>
-      </div>
+      <PageBanner
+        eyebrow="Students"
+        title="Your semester at 180DC Budapest."
+        copy="Learn by doing, work with purpose, and grow with a team of people who want to make consulting more meaningful."
+        tone="students"
+      />
 
       <div className="mt-16 max-w-3xl">
         <p className="text-xs font-semibold uppercase section-kicker text-slate-500">Semester timeline</p>
