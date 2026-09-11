@@ -16,6 +16,7 @@ import PartnersPage from './pages/PartnersPage'
 import StudentsPage from './pages/StudentsPage'
 import BranchAdminPage from './pages/BranchAdminPage'
 import BlogPage from './pages/BlogPage'
+import { TranslationLayer } from './components/TranslatedText'
 
 function ScrollToTop() {
   const { pathname } = useLocation()
@@ -31,6 +32,7 @@ export default function App() {
   return (
     <BrowserRouter>
       <ScrollToTop />
+      <TranslationLayer />
       <div className="relative min-h-screen overflow-hidden bg-[#f8fafc] text-slate-900">
         <div className="pointer-events-none absolute inset-0 bg-hero-grid bg-[size:72px_72px] opacity-[0.03]" />
         <div className="pointer-events-none absolute inset-x-0 top-0 h-[24rem] bg-[radial-gradient(circle_at_top,rgba(16,185,129,0.08),transparent_60%)]" />
