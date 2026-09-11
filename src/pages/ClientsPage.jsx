@@ -116,8 +116,10 @@ export default function ClientsPage() {
           className="rounded-[2rem] border border-slate-200 bg-slate-50 p-8 shadow-glow sm:p-10"
           action="https://formsubmit.co/budapest@180dc.org"
           method="POST"
+          acceptCharset="UTF-8"
         >
           <input type="hidden" name="_captcha" value="false" />
+          <input type="hidden" name="_template" value="table" />
           <input type="hidden" name="_subject" value="180DC Budapest client inquiry" />
           <h2 className="text-2xl font-semibold text-slate-900">Send an inquiry</h2>
           <p className="mt-3 text-sm leading-7 text-slate-600">
@@ -127,22 +129,22 @@ export default function ClientsPage() {
           <div className="mt-6 grid gap-4 sm:grid-cols-2">
             <label className="grid gap-2 text-sm text-slate-700">
               Name
-              <input name="name" className="rounded-2xl border border-slate-200 bg-white px-4 py-3 outline-none" />
+              <input name="name" required className="rounded-2xl border border-slate-200 bg-white px-4 py-3 outline-none" />
             </label>
             <label className="grid gap-2 text-sm text-slate-700">
               Organisation
-              <input name="organisation" className="rounded-2xl border border-slate-200 bg-white px-4 py-3 outline-none" />
+              <input name="organisation" required className="rounded-2xl border border-slate-200 bg-white px-4 py-3 outline-none" />
             </label>
           </div>
 
           <label className="mt-4 grid gap-2 text-sm text-slate-700">
             Email
-            <input name="email" type="email" className="rounded-2xl border border-slate-200 bg-white px-4 py-3 outline-none" />
+            <input name="_replyto" type="email" required className="rounded-2xl border border-slate-200 bg-white px-4 py-3 outline-none" />
           </label>
 
           <label className="mt-4 grid gap-2 text-sm text-slate-700">
             Message
-            <textarea name="message" rows="6" className="rounded-2xl border border-slate-200 bg-white px-4 py-3 outline-none" />
+            <textarea name="message" rows="6" required className="rounded-2xl border border-slate-200 bg-white px-4 py-3 outline-none" />
           </label>
 
           <button className="mt-6 inline-flex rounded-full bg-[#73b744] px-6 py-3.5 text-sm font-semibold text-white transition hover:bg-[#5d9f35]">

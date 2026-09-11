@@ -102,18 +102,20 @@ export default function PartnersPage() {
           className="rounded-[2rem] border border-slate-200 bg-slate-50 p-8 shadow-glow sm:p-10"
           action="https://formsubmit.co/budapest@180dc.org"
           method="POST"
+          acceptCharset="UTF-8"
         >
           <input type="hidden" name="_captcha" value="false" />
+          <input type="hidden" name="_template" value="table" />
           <input type="hidden" name="_subject" value="180DC Budapest partnership enquiry" />
           <h2 className="text-2xl font-semibold text-slate-900">Start a collaboration</h2>
           <p className="mt-3 text-sm leading-7 text-slate-600">Your message will be emailed to budapest@180dc.org.</p>
 
           <div className="mt-6 grid gap-4 sm:grid-cols-2">
-            <label className="grid gap-2 text-sm text-slate-700">Name<input name="name" className="rounded-2xl border border-slate-200 bg-white px-4 py-3 outline-none" /></label>
-            <label className="grid gap-2 text-sm text-slate-700">Organisation<input name="organisation" className="rounded-2xl border border-slate-200 bg-white px-4 py-3 outline-none" /></label>
+            <label className="grid gap-2 text-sm text-slate-700">Name<input name="name" required className="rounded-2xl border border-slate-200 bg-white px-4 py-3 outline-none" /></label>
+            <label className="grid gap-2 text-sm text-slate-700">Organisation<input name="organisation" required className="rounded-2xl border border-slate-200 bg-white px-4 py-3 outline-none" /></label>
           </div>
-          <label className="mt-4 grid gap-2 text-sm text-slate-700">Email<input name="email" type="email" className="rounded-2xl border border-slate-200 bg-white px-4 py-3 outline-none" /></label>
-          <label className="mt-4 grid gap-2 text-sm text-slate-700">Message<textarea name="message" rows="6" className="rounded-2xl border border-slate-200 bg-white px-4 py-3 outline-none" /></label>
+          <label className="mt-4 grid gap-2 text-sm text-slate-700">Email<input name="_replyto" type="email" required className="rounded-2xl border border-slate-200 bg-white px-4 py-3 outline-none" /></label>
+          <label className="mt-4 grid gap-2 text-sm text-slate-700">Message<textarea name="message" rows="6" required className="rounded-2xl border border-slate-200 bg-white px-4 py-3 outline-none" /></label>
           <button className="mt-6 inline-flex rounded-full bg-[#73b744] px-6 py-3.5 text-sm font-semibold text-white transition hover:bg-[#5d9f35]">Send Partnership Note</button>
         </form>
       </div>
