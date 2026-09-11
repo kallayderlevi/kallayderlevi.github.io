@@ -42,6 +42,8 @@ const translations = {
   'Message': 'Üzenet',
 }
 
+const originalTextValues = new WeakMap()
+
 export function translateFixedText(value, language) {
   if (language === 'en') return value
   return translations[value] || value
@@ -61,8 +63,8 @@ export function TranslationLayer() {
       node = walker.nextNode()
     }
     nodes.forEach((textNode) => {
-      const original = textNode.dataset.originalText || textNode.nodeValue
-      textNode.dataset.originalText = original
+      const original = originalTextValues.get(textNode) || textNode.nodeValue
+      originalTextValues.set(textNode, original)
       textNode.nodeValue = translateFixedText(original, language)
     })
     return undefined
