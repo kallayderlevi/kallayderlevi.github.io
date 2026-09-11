@@ -1,4 +1,5 @@
 import PageBanner from '../components/PageBanner'
+import { useLanguage } from '../i18n'
 
 const partnerFormats = [
   {
@@ -37,12 +38,13 @@ const benefits = [
 ]
 
 export default function PartnersPage() {
+  const { t } = useLanguage()
   return (
     <section className="mx-auto max-w-7xl px-6 py-20 lg:px-8 lg:py-24">
       <PageBanner
         eyebrow="Partners"
-        title="Build the next generation of social impact leaders with us."
-        copy="Collaborate with 180DC Budapest through events, talent access, mentoring, and real consulting work."
+        title={t('partnerBanner')}
+        copy={t('partnerBannerCopy')}
         tone="partners"
       />
 

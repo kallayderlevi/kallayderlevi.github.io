@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom'
+import { useLanguage } from '../i18n'
 
 const routes = [
   {
@@ -22,15 +23,16 @@ const routes = [
 ]
 
 export default function Services() {
+  const { t } = useLanguage()
   return (
     <section id="services" className="mx-auto max-w-7xl px-6 py-20 lg:px-8 lg:py-24">
       <div className="mb-8 max-w-3xl">
-        <p className="text-xs font-semibold uppercase section-kicker text-slate-500">Clients, partners, and students</p>
+        <p className="text-xs font-semibold uppercase section-kicker text-slate-500">{t('pathsEyebrow')}</p>
         <h2 className="mt-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl">
-          Three clear paths for working with the Budapest branch.
+          {t('pathsTitle')}
         </h2>
         <p className="mt-4 text-base leading-7 text-slate-600">
-          Choose the path that fits you. Each one now lives on its own page.
+          {t('pathsCopy')}
         </p>
       </div>
 
@@ -54,7 +56,7 @@ export default function Services() {
                 to={route.to}
                 className="inline-flex min-w-40 items-center justify-center rounded-full bg-emerald-600 px-7 py-4 text-base font-semibold text-white transition hover:bg-emerald-700"
               >
-                View {route.title}
+                {t('view')} {route.title === 'Clients' ? t('clients') : route.title === 'Partners' ? t('partners') : t('students')}
               </Link>
             </div>
           </article>

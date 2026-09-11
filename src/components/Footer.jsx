@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 import SocialLinks from './SocialLinks'
+import { useLanguage } from '../i18n'
 
 const footerLinks = [
   { label: 'Our Vision', href: '/#vision' },
@@ -12,6 +13,7 @@ const footerLinks = [
 ]
 
 export default function Footer() {
+  const { t } = useLanguage()
   return (
     <footer className="border-t border-slate-200 bg-white">
       <div className="mx-auto flex max-w-7xl flex-col gap-6 px-6 py-8 lg:flex-row lg:items-center lg:justify-between lg:px-8">
@@ -22,7 +24,7 @@ export default function Footer() {
             className="h-16 w-auto max-w-[270px] object-contain object-left"
           />
           <p className="mt-2 text-sm text-slate-500">Branch of 180 Degrees Consulting. Built for social impact.</p>
-          <p className="mt-4 text-xs font-semibold uppercase tracking-[0.2em] text-[#5d9f35]">Follow 180DC Budapest</p>
+          <p className="mt-4 text-xs font-semibold uppercase tracking-[0.2em] text-[#5d9f35]">{t('findUs')}</p>
           <div className="mt-3">
             <SocialLinks compact />
           </div>

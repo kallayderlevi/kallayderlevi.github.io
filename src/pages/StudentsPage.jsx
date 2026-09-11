@@ -1,4 +1,5 @@
 import PageBanner from '../components/PageBanner'
+import { useLanguage } from '../i18n'
 
 const timeline = [
   {
@@ -43,12 +44,13 @@ const benefits = [
 ]
 
 export default function StudentsPage() {
+  const { t } = useLanguage()
   return (
     <section className="mx-auto max-w-7xl px-6 py-20 lg:px-8 lg:py-24">
       <PageBanner
         eyebrow="Students"
-        title="Your semester at 180DC Budapest."
-        copy="Learn by doing, work with purpose, and grow with a team of people who want to make consulting more meaningful."
+        title={t('studentBanner')}
+        copy={t('studentBannerCopy')}
         tone="students"
       />
 

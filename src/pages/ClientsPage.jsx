@@ -1,4 +1,5 @@
 import PageBanner from '../components/PageBanner'
+import { useLanguage } from '../i18n'
 
 const serviceGroups = [
   {
@@ -20,12 +21,13 @@ const serviceGroups = [
 ]
 
 export default function ClientsPage() {
+  const { t } = useLanguage()
   return (
     <section className="mx-auto max-w-7xl px-6 py-20 lg:px-8 lg:py-24">
       <PageBanner
         eyebrow="Client services"
-        title="Practical consulting for organisations creating a better future."
-        copy="We work with organisations of every size, from social enterprises with under five employees to international non-profits with more than 1,000 people."
+        title={t('clientBanner')}
+        copy={t('clientBannerCopy')}
         tone="clients"
       />
 

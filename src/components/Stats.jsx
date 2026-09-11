@@ -1,3 +1,5 @@
+import { useLanguage } from '../i18n'
+
 const stats = [
   ['180+', 'Branches Worldwide'],
   ['35+', 'Countries'],
@@ -6,10 +8,12 @@ const stats = [
 ]
 
 export default function Stats() {
+  const { t } = useLanguage()
+  const translatedStats = [[ '40+', t('countries') ], [ '190+', t('branches') ], [ '7,800+', t('projects') ], [ '60,000+', t('leaders') ]]
   return (
     <section className="border-y border-slate-200 bg-white">
       <div className="mx-auto grid max-w-7xl gap-0 px-6 lg:grid-cols-4 lg:px-8">
-        {stats.map(([value, label], index) => (
+        {translatedStats.map(([value, label], index) => (
           <div
             key={label}
             className={`px-6 py-8 text-center lg:px-8 ${index < stats.length - 1 ? 'border-b border-slate-200 lg:border-b-0 lg:border-r' : ''}`}

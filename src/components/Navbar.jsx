@@ -1,5 +1,7 @@
 import { useState } from 'react'
 import { NavLink } from 'react-router-dom'
+import { useLanguage } from '../i18n'
+import LanguageSwitcher from './LanguageSwitcher'
 
 const links = [
   { label: 'Our Vision', href: '/#vision' },
@@ -13,12 +15,22 @@ const links = [
 
 export default function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false)
+  const { t } = useLanguage()
+  const translatedLinks = [
+    { label: t('navVision'), href: '/#vision' },
+    { label: t('navClients'), href: '/clients' },
+    { label: t('navPartners'), href: '/partners' },
+    { label: t('navStudents'), href: '/students' },
+    { label: t('navBlog'), href: '/blog' },
+    { label: t('navContact'), href: '/contact' },
+    { label: t('navBranch'), href: '/our-branch' },
+  ]
 
   return (
     <header className="sticky top-0 z-50 border-b border-slate-200/80 bg-white/90 backdrop-blur-md">
       <div className="mx-auto flex min-h-[4.5rem] max-w-7xl items-center justify-between gap-3 px-4 py-2 sm:px-6 lg:px-8">
         <nav className="hidden items-center gap-6 lg:flex">
-          {links.map((link) => (
+          {translatedLinks.map((link) => (
             <NavLink
               key={link.label}
               to={link.href}
@@ -32,6 +44,7 @@ export default function Navbar() {
         </nav>
 
         <div className="hidden items-center gap-3 md:flex">
+          <LanguageSwitcher />
           <a
             href="/clients"
             className="rounded-full border border-emerald-600/20 bg-emerald-600 px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-emerald-700"
@@ -68,7 +81,7 @@ export default function Navbar() {
       {mobileOpen && (
         <nav className="border-t border-slate-200 bg-white px-4 py-4 lg:hidden">
           <div className="mx-auto grid max-w-7xl gap-1">
-            {links.map((link) => (
+            {translatedLinks.map((link) => (
               <NavLink
                 key={link.label}
                 to={link.href}
@@ -79,8 +92,9 @@ export default function Navbar() {
               </NavLink>
             ))}
             <div className="mt-2 grid gap-2 border-t border-slate-200 pt-3 sm:grid-cols-2">
-              <a href="/clients" onClick={() => setMobileOpen(false)} className="rounded-full bg-[#73b744] px-5 py-3 text-center text-sm font-semibold text-white">For Clients</a>
-              <a href="/students" onClick={() => setMobileOpen(false)} className="rounded-full border border-slate-200 px-5 py-3 text-center text-sm font-semibold text-slate-700">Join as Student</a>
+              <LanguageSwitcher />
+              <a href="/clients" onClick={() => setMobileOpen(false)} className="rounded-full bg-[#73b744] px-5 py-3 text-center text-sm font-semibold text-white">{t('forClients')}</a>
+              <a href="/students" onClick={() => setMobileOpen(false)} className="rounded-full border border-slate-200 px-5 py-3 text-center text-sm font-semibold text-slate-700">{t('joinStudent')}</a>
             </div>
           </div>
         </nav>

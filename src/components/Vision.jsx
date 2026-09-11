@@ -1,16 +1,19 @@
+import { useLanguage } from '../i18n'
+
 export default function Vision() {
+  return <VisionContent />
+}
+
+function VisionContent() {
+  const { t } = useLanguage()
   return (
     <section id="vision" className="relative mx-auto max-w-7xl px-6 py-20 lg:px-8 lg:py-28">
       <div className="grid items-center gap-10 lg:grid-cols-[0.85fr_1.15fr] lg:gap-16">
         <div>
-          <p className="text-xs font-semibold uppercase section-kicker text-slate-500">Our vision</p>
-          <h2 className="mt-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl">
-            A world where every organisation can reach its full potential.
-          </h2>
+          <p className="text-xs font-semibold uppercase section-kicker text-slate-500">{t('vision')}</p>
+          <h2 className="mt-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl">{t('visionTitle')}</h2>
           <p className="mt-5 text-base leading-8 text-slate-600">
-            180 Degrees Consulting empowers non-profits and social enterprises to create meaningful impact through
-            affordable, high-quality strategic and operational support. At the same time, we nurture the next
-            generation of social impact leaders through hands-on consulting experience.
+            {t('visionCopy')}
           </p>
           <p className="mt-5 text-base leading-8 text-slate-600">
             The name 180 Degrees reflects the transformation we aim to create: turning good organisations into great
@@ -20,7 +23,7 @@ export default function Vision() {
             href="/our-branch"
             className="mt-8 inline-flex rounded-full bg-emerald-600 px-6 py-3.5 text-sm font-semibold text-white transition hover:bg-emerald-700"
           >
-            Meet our branch
+            {t('meetBranch')}
           </a>
         </div>
 
