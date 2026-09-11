@@ -1,7 +1,14 @@
 import { appwriteConfig, ID, storage, tables } from '../lib/appwrite'
 import { defaultBoard, defaultConsultants, defaultPosts } from './branchContent'
 
-const mapPerson = (row) => ({ id: row.$id, ...row, image: row.image || row.imageFileId || '' })
+const imageUrl = (value) => {
+  if (!value) return ''
+  if (String(value).startsWith('http')) return value
+  if (!appwriteConfig.mediaBucketId) return ''
+  return storage.getFileView({ bucketId: appwriteConfig.mediaBucketId, fileId: value }).toString()
+}
+
+const mapPerson = (row) => ({ id: row.$id, ...row, image: imageUrl(row.image || row.imageFileId) })
 const mapPost = (row) => ({ id: row.$id, ...row, copy: row.copy || row.summary || '', date: row.date || row.publishedAt || '' })
 
 async function listRows(tableId, mapper) {

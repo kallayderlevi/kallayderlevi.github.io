@@ -4,11 +4,14 @@ import { loadRemoteContent, saveRemoteContent, uploadImage } from '../data/appwr
 import { account, appwriteEnabled } from '../lib/appwrite'
 
 function ImageField({ value, onChange }) {
+  const [uploadError, setUploadError] = useState('')
+
   const handleFile = (event) => {
     const file = event.target.files?.[0]
     if (!file) return
+    setUploadError('')
     if (appwriteEnabled) {
-      uploadImage(file).then(onChange).catch(() => onChange(''))
+      uploadImage(file).then(onChange).catch((error) => setUploadError(`Upload failed: ${error.message}`))
       return
     }
     const reader = new FileReader()
@@ -21,6 +24,7 @@ function ImageField({ value, onChange }) {
       Photo
       <input type="file" accept="image/*" onChange={handleFile} className="rounded-xl border border-slate-200 bg-white px-3 py-2 text-sm" />
       {value && <img src={value} alt="Preview" className="h-24 w-24 rounded-xl object-cover" />}
+      {uploadError && <p className="text-sm text-red-600">{uploadError}</p>}
     </div>
   )
 }
