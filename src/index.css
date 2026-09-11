@@ -1,0 +1,124 @@
+@import 'tailwindcss';
+
+:root {
+  --brand-green: #73b744;
+  --brand-green-dark: #5d9f35;
+  --brand-green-soft: #edf7e8;
+  color-scheme: light;
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  background: #f8fafc;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  min-height: 100vh;
+  margin: 0;
+  background:
+    radial-gradient(circle at top left, rgba(16, 185, 129, 0.08), transparent 28%),
+    radial-gradient(circle at top right, rgba(15, 23, 42, 0.05), transparent 30%),
+    linear-gradient(180deg, #f8fafc 0%, #f8fafc 52%, #f1f5f9 100%);
+  color: #0f172a;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+::selection {
+  background: rgba(16, 185, 129, 0.18);
+  color: #0f172a;
+}
+
+.shadow-glow {
+  box-shadow: 0 0 0 1px rgba(15, 23, 42, 0.06), 0 18px 50px rgba(15, 23, 42, 0.06);
+}
+
+.bg-hero-grid {
+  background-image:
+    linear-gradient(rgba(148, 163, 184, 0.09) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(148, 163, 184, 0.09) 1px, transparent 1px);
+}
+
+.section-kicker {
+  letter-spacing: 0.32em;
+}
+
+@keyframes bannerSweep {
+  0% { transform: translateX(-70%); }
+  100% { transform: translateX(70%); }
+}
+
+@keyframes bannerRise {
+  from { opacity: 0; transform: translateY(14px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes bannerOrbit {
+  0%, 100% { transform: rotate(-3deg) translateY(0); }
+  50% { transform: rotate(3deg) translateY(-8px); }
+}
+
+.banner-sweep {
+  animation: bannerSweep 9s ease-in-out infinite alternate;
+}
+
+.banner-rise {
+  animation: bannerRise 700ms ease-out both;
+}
+
+.banner-orbit {
+  animation: bannerOrbit 6s ease-in-out infinite;
+}
+
+@keyframes serviceReveal {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.service-reveal {
+  animation: serviceReveal 550ms ease-out both;
+}
+
+.bg-emerald-50 {
+  background-color: var(--brand-green-soft) !important;
+}
+
+.bg-emerald-200 {
+  background-color: #c8e7b7 !important;
+}
+
+.bg-emerald-600 {
+  background-color: var(--brand-green) !important;
+}
+
+.bg-emerald-700 {
+  background-color: var(--brand-green-dark) !important;
+}
+
+.bg-emerald-500 {
+  background-color: var(--brand-green) !important;
+}
+
+.text-emerald-300,
+.text-emerald-700 {
+  color: var(--brand-green) !important;
+}
+
+.border-emerald-600\/20,
+.border-emerald-600\/15,
+.border-emerald-400\/30 {
+  border-color: color-mix(in srgb, var(--brand-green) 24%, transparent) !important;
+}
+
+.file\:bg-emerald-50 {
+  background-color: var(--brand-green-soft) !important;
+}
+
+.file\:text-emerald-700 {
+  color: var(--brand-green) !important;
+}

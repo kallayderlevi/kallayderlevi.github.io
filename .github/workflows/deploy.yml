@@ -1,0 +1,53 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches: [main, master]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+
+      - name: Setup Node
+        uses: actions/setup-node@v5
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build
+        run: npm run build
+        env:
+          VITE_APPWRITE_ENDPOINT: 'https://fra.cloud.appwrite.io/v1'
+          VITE_APPWRITE_PROJECT_ID: '6aa2e15b001913bc2b82'
+          VITE_APPWRITE_DATABASE_ID: '6aa2e2a80021d6fd5353'
+          VITE_APPWRITE_BOARD_TABLE_ID: '6aa3bc9c002c6bb480e8'
+          VITE_APPWRITE_CONSULTANTS_TABLE_ID: '6aa3bcd6001741177f31'
+          VITE_APPWRITE_POSTS_TABLE_ID: '6aa3bd05000061c8933b'
+          VITE_APPWRITE_MEDIA_BUCKET_ID: '6aa3bd680005a88b2c08'
+
+      - name: Configure Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./dist
+
+      - name: Deploy
+        uses: actions/deploy-pages@v4
