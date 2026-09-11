@@ -101,21 +101,23 @@ export default function StudentsPage() {
         </div>
       </div>
 
-      <div className="mt-20 grid gap-8 lg:grid-cols-[0.9fr_1.1fr]">
-        <div className="rounded-[2rem] border border-slate-200 bg-white p-8 shadow-glow sm:p-10">
+      <div className="mt-20 grid min-w-0 grid-cols-1 gap-8 lg:grid-cols-[0.9fr_1.1fr]">
+        <div className="min-w-0 rounded-[2rem] border border-slate-200 bg-white p-6 shadow-glow sm:p-10">
           <p className="text-xs font-semibold uppercase section-kicker text-slate-500">Selection process</p>
           <h2 className="mt-4 text-2xl font-semibold text-slate-900">Bring curiosity. We&apos;ll build the rest together.</h2>
           <p className="mt-4 text-base leading-7 text-slate-600">
             We look for people who communicate clearly, learn quickly, and care about the work. Applications are
             followed by a structured assessment centre and a final conversation about fit, motivation, and coachability.
           </p>
-          <div className="mt-8 border-t-2 border-[#73b744] pt-5 text-sm leading-7 text-slate-600">
-            CV review &nbsp;•&nbsp; Assessment centre &nbsp;•&nbsp; Final interview
+          <div className="mt-8 flex flex-wrap gap-2 border-t-2 border-[#73b744] pt-5 text-sm leading-6 text-slate-600">
+            <span className="rounded-full bg-[#edf7e8] px-3 py-2">CV review</span>
+            <span className="rounded-full bg-[#edf7e8] px-3 py-2">Assessment centre</span>
+            <span className="rounded-full bg-[#edf7e8] px-3 py-2">Final interview</span>
           </div>
         </div>
 
         <form
-          className="rounded-[2rem] border border-slate-200 bg-slate-50 p-8 shadow-glow sm:p-10"
+          className="min-w-0 rounded-[2rem] border border-slate-200 bg-slate-50 p-6 shadow-glow sm:p-10"
           action="https://formsubmit.co/budapest@180dc.org"
           method="POST"
           encType="multipart/form-data"
