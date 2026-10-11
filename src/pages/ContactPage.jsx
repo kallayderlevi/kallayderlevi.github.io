@@ -1,5 +1,6 @@
 import SocialLinks from '../components/SocialLinks'
 import { useLanguage } from '../i18n'
+import EmailLink from '../components/EmailLink'
 
 export default function ContactPage() {
   const { t } = useLanguage()
@@ -11,7 +12,7 @@ export default function ContactPage() {
         <p className="mt-5 text-lg leading-8 text-slate-600">{t('contactCopy')}</p>
 
         <div className="mt-8 space-y-4 text-sm leading-7 text-slate-600">
-          <p><span className="block text-slate-500">{t('email')}</span> budapest@180dc.org</p>
+          <div><span className="block text-slate-500">{t('email')}</span><div className="mt-2 flex flex-wrap items-center gap-3"><span>budapest@180dc.org</span><EmailLink /></div></div>
           <p><span className="block text-slate-500">{t('location')}</span> Budapest, Hungary</p>
           <div>
             <span className="block text-sm font-semibold text-slate-900">{t('findUs')}</span>

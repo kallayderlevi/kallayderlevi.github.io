@@ -47,13 +47,8 @@ export default function Hero() {
           </div>
         </div>
 
-        <div className="digital-panel rounded-[2rem] p-6 text-white sm:p-8">
+        <div className="rounded-[2rem] border border-slate-200 bg-slate-100 p-6 shadow-glow sm:p-8">
           <div className="mt-6 flex items-center gap-4 rounded-2xl bg-[#73b744] p-4 text-white">
-            <img
-              src="/brand/logo-full-white.png"
-              alt="180 Degrees Consulting Budapest"
-              className="h-20 w-auto max-w-[220px] shrink-0 object-contain object-left mix-blend-screen"
-            />
             <div>
               <p className="text-xs font-semibold uppercase section-kicker text-white">{t('oneNetwork')}</p>
               <p className="mt-1 text-sm leading-6 text-white/90">{t('localPerspective')}</p>
@@ -67,9 +62,9 @@ export default function Hero() {
               ['7,800+', t('projects')],
               ['60,000+', t('leaders')],
             ].map(([value, label]) => (
-              <div key={label} className="rounded-2xl border border-white/15 bg-white/10 p-4">
-                <dt className="text-sm font-medium text-white/70">{label}</dt>
-                <dd className="mt-1 text-2xl font-semibold tracking-tight text-white">{value}</dd>
+              <div key={label} className="rounded-2xl border border-slate-200 bg-white p-4">
+                <dt className="text-sm font-medium text-slate-500">{label}</dt>
+                <dd className="mt-1 text-2xl font-semibold tracking-tight text-slate-900">{value}</dd>
               </div>
             ))}
           </dl>

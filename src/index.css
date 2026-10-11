@@ -65,6 +65,15 @@ select:hover {
   border-color: color-mix(in srgb, var(--brand-green) 55%, white);
 }
 
+label:has(> input[required])::before,
+label:has(> textarea[required])::before,
+label:has(> select[required])::before {
+  content: '*';
+  color: var(--brand-green-dark);
+  font-weight: 800;
+  margin-right: 0.2rem;
+}
+
 body {
   min-height: 100vh;
   margin: 0;

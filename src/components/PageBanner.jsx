@@ -16,13 +16,7 @@ export default function PageBanner({ eyebrow, title, copy, tone = 'clients' }) {
           <h1 className="mt-4 max-w-3xl text-4xl font-semibold tracking-tight drop-shadow-md sm:text-5xl">{title}</h1>
           <p className="mt-5 max-w-2xl text-lg leading-8 text-white drop-shadow-sm">{copy}</p>
         </div>
-        <div className="hidden justify-end lg:flex">
-          <img
-            src="/brand/logo-full-white.png"
-            alt="180 Degrees Consulting Budapest"
-            className="h-48 w-auto max-w-[280px] object-contain mix-blend-screen opacity-95 banner-logo-float"
-          />
-        </div>
+        <div className="hidden justify-end lg:flex" aria-hidden="true" />
       </div>
     </div>
   )

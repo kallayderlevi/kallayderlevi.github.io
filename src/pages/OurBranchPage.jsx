@@ -1,5 +1,6 @@
 import { useBranchContent } from '../hooks/useBranchContent'
 import { useLanguage } from '../i18n'
+import EmailLink from '../components/EmailLink'
 
 export default function OurBranchPage() {
   const { board, consultants } = useBranchContent()
@@ -26,12 +27,10 @@ export default function OurBranchPage() {
           <p className="mt-4 text-sm leading-7 text-slate-600">
             {t('branchDisciplines')}
           </p>
-          <a
-            href="mailto:budapest@180dc.org"
-            className="mt-5 inline-flex text-sm font-semibold text-emerald-700 hover:text-emerald-800"
-          >
-            budapest@180dc.org
-          </a>
+          <div className="mt-5 flex flex-wrap items-center gap-3">
+            <span className="text-sm font-semibold text-slate-700">budapest@180dc.org</span>
+            <EmailLink />
+          </div>
         </div>
       </div>
 
@@ -59,9 +58,10 @@ export default function OurBranchPage() {
               <p className="text-xs font-semibold uppercase section-kicker text-[#5d9f35]">{member.role}</p>
               <h3 className="mt-3 text-lg font-semibold text-slate-900">{member.name}</h3>
               <p className="mt-2 text-sm leading-6 text-slate-600">{member.background}</p>
-              <a href={`mailto:${member.email}`} className="mt-4 block text-sm font-medium text-slate-500 hover:text-emerald-700">
-                {member.email}
-              </a>
+              <div className="mt-4 flex flex-wrap items-center gap-3">
+                <span className="text-sm font-medium text-slate-500">{member.email}</span>
+                <EmailLink email={member.email} />
+              </div>
               {member.showLinkedin && member.linkedin && (
                 <a href={member.linkedin} target="_blank" rel="noreferrer" aria-label={`${member.name} on LinkedIn`} title="LinkedIn" className="brand-hover mt-3 inline-flex rounded-full bg-[#73b744] px-3 py-1.5 text-xs font-bold text-white">
                   LinkedIn
@@ -108,7 +108,7 @@ export default function OurBranchPage() {
                   <p className="text-xs font-semibold uppercase section-kicker text-emerald-700">{member.role}</p>
                   <h3 className="mt-3 text-lg font-semibold text-slate-900">{member.name}</h3>
                   <p className="mt-2 text-sm leading-6 text-slate-600">{member.background}</p>
-                  <a href={`mailto:${member.email}`} className="mt-4 block text-sm text-slate-500 hover:text-emerald-700">{member.email}</a>
+                  <div className="mt-4 flex flex-wrap items-center gap-3"><span className="text-sm text-slate-500">{member.email}</span><EmailLink email={member.email} /></div>
                   {member.showLinkedin && member.linkedin && <a href={member.linkedin} target="_blank" rel="noreferrer" aria-label={`${member.name} on LinkedIn`} title="LinkedIn" className="brand-hover mt-3 inline-flex rounded-full bg-[#73b744] px-3 py-1.5 text-xs font-bold text-white">LinkedIn</a>}
                 </div>
               </article>

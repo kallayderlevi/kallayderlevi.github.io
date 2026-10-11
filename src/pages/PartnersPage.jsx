@@ -1,5 +1,6 @@
 import PageBanner from '../components/PageBanner'
 import { useLanguage } from '../i18n'
+import EmailLink from '../components/EmailLink'
 
 const partnerFormats = [
   {
@@ -90,7 +91,7 @@ export default function PartnersPage() {
           <p className="mt-4 text-base leading-7 text-slate-600">
             {t('partnershipCopy')}
           </p>
-          <p className="mt-6 text-sm font-semibold text-slate-700">budapest@180dc.org</p>
+          <div className="mt-6 flex flex-wrap items-center gap-3"><span className="text-sm font-semibold text-slate-700">budapest@180dc.org</span><EmailLink /></div>
         </div>
 
         <form

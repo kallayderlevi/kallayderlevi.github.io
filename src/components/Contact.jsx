@@ -41,6 +41,7 @@ export default function Contact() {
                 name="name"
                 type="text"
                 placeholder="Alex Johnson"
+                required
                 className="rounded-2xl border border-slate-200 bg-white px-4 py-3 text-slate-900 placeholder:text-slate-400 outline-none transition focus:border-emerald-500"
               />
             </label>
@@ -50,6 +51,7 @@ export default function Contact() {
                 name="organisation"
                 type="text"
                 placeholder="Organisation name"
+                required
                 className="rounded-2xl border border-slate-200 bg-white px-4 py-3 text-slate-900 placeholder:text-slate-400 outline-none transition focus:border-emerald-500"
               />
             </label>
@@ -62,6 +64,7 @@ export default function Contact() {
                 name="email"
                 type="email"
                 placeholder="name@example.com"
+                required
                 className="rounded-2xl border border-slate-200 bg-white px-4 py-3 text-slate-900 placeholder:text-slate-400 outline-none transition focus:border-emerald-500"
               />
             </label>
@@ -69,6 +72,7 @@ export default function Contact() {
               I am a
               <select
                 name="inquiry_type"
+                required
                 className="rounded-2xl border border-slate-200 bg-white px-4 py-3 text-slate-900 outline-none transition focus:border-emerald-500"
               >
                 <option>NGO / Non-profit</option>
@@ -86,6 +90,7 @@ export default function Contact() {
               name="message"
               rows="6"
               placeholder="Tell us what you are looking for."
+              required
               className="rounded-2xl border border-slate-200 bg-white px-4 py-3 text-slate-900 placeholder:text-slate-400 outline-none transition focus:border-emerald-500"
             />
           </label>
