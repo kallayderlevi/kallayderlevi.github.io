@@ -76,15 +76,18 @@ export default function StudentsPage() {
   }
 
   const submitApplication = async (event) => {
+    event.preventDefault()
+    const form = event.currentTarget
     try {
-      const result = await submitApplicationForm(event.currentTarget)
-      if (!result.handled) return
-      event.preventDefault()
+      const result = await submitApplicationForm(form)
+      if (!result.handled) {
+        HTMLFormElement.prototype.submit.call(form)
+        return
+      }
       setApplicationStatus('success')
-      event.currentTarget.reset()
-    } catch (error) {
-      event.preventDefault()
-      setApplicationStatus(error.message)
+      form.reset()
+    } catch {
+      HTMLFormElement.prototype.submit.call(form)
     }
   }
 
