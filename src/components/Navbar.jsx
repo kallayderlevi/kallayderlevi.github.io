@@ -53,7 +53,7 @@ export default function Navbar() {
           <img
             src="/brand/logo-budapest-full.png"
             alt="180 Degrees Consulting Budapest"
-            className="h-16 w-auto max-w-[190px] object-contain object-right sm:h-[5.5rem] sm:max-w-[330px]"
+            className="h-12 w-auto max-w-[155px] object-contain object-right sm:h-[5.5rem] sm:max-w-[330px]"
           />
         </NavLink>
 
@@ -63,13 +63,14 @@ export default function Navbar() {
           className="brand-link-hover order-first flex h-11 w-11 items-center justify-center rounded-full border border-slate-200 text-slate-700 lg:hidden"
           aria-label={mobileOpen ? 'Close menu' : 'Open menu'}
           aria-expanded={mobileOpen}
+          aria-controls="mobile-navigation"
         >
           <span className="text-2xl leading-none">{mobileOpen ? '×' : '☰'}</span>
         </button>
       </div>
 
       {mobileOpen && (
-        <nav className="border-t border-slate-200 bg-white px-4 py-4 lg:hidden">
+        <nav id="mobile-navigation" className="max-h-[calc(100vh-4.5rem)] overflow-y-auto border-t border-slate-200 bg-white px-4 py-4 lg:hidden">
           <div className="mx-auto grid max-w-7xl gap-1">
             {translatedLinks.map((link) => (
               <NavLink
@@ -82,7 +83,7 @@ export default function Navbar() {
               </NavLink>
             ))}
             <div className="mt-2 grid gap-2 border-t border-slate-200 pt-3 sm:grid-cols-2">
-              <LanguageSwitcher />
+              <div className="sm:col-span-2"><LanguageSwitcher /></div>
               <a href="/clients" onClick={() => setMobileOpen(false)} className="brand-hover rounded-full bg-[#73b744] px-5 py-3 text-center text-sm font-semibold text-white">{t('forClients')}</a>
               <a href="/students" onClick={() => setMobileOpen(false)} className="brand-link-hover rounded-full border border-slate-200 px-5 py-3 text-center text-sm font-semibold text-slate-700">{t('joinStudent')}</a>
             </div>

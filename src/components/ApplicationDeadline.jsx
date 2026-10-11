@@ -20,11 +20,11 @@ export default function ApplicationDeadline() {
   return (
     <div className="mt-3 rounded-2xl border border-[#73b744]/25 bg-[#edf7e8] p-4 text-[#5d9f35]" role="status">
       <p className="text-xs font-semibold uppercase tracking-[0.18em]">{t('deadlineOpen')}</p>
-      <div className="mt-3 flex flex-wrap items-end gap-x-4 gap-y-2 font-mono tabular-nums">
-        <span className="text-3xl font-bold tracking-tight sm:text-4xl">{String(status.days).padStart(2, '0')}<small className="ml-1 text-xs font-semibold uppercase tracking-normal">{t('deadlineDays')}</small></span>
-        <span className="text-3xl font-bold tracking-tight sm:text-4xl">{String(status.hours).padStart(2, '0')}<small className="ml-1 text-xs font-semibold uppercase tracking-normal">{t('deadlineHours')}</small></span>
-        <span className="text-3xl font-bold tracking-tight sm:text-4xl">{String(status.minutes).padStart(2, '0')}<small className="ml-1 text-xs font-semibold uppercase tracking-normal">{t('deadlineMinutes')}</small></span>
-        <span className="text-3xl font-bold tracking-tight sm:text-4xl">{String(status.seconds).padStart(2, '0')}<small className="ml-1 text-xs font-semibold uppercase tracking-normal">{t('deadlineSeconds')}</small></span>
+      <div className="mt-3 grid grid-cols-2 gap-2 font-mono tabular-nums sm:flex sm:flex-wrap sm:items-end sm:gap-x-4 sm:gap-y-2">
+        <span className="rounded-xl bg-white/70 px-2 py-1 text-2xl font-bold tracking-tight sm:bg-transparent sm:px-0 sm:py-0 sm:text-4xl">{String(status.days).padStart(2, '0')}<small className="ml-1 text-[0.6rem] font-semibold uppercase tracking-normal sm:text-xs">{t('deadlineDays')}</small></span>
+        <span className="rounded-xl bg-white/70 px-2 py-1 text-2xl font-bold tracking-tight sm:bg-transparent sm:px-0 sm:py-0 sm:text-4xl">{String(status.hours).padStart(2, '0')}<small className="ml-1 text-[0.6rem] font-semibold uppercase tracking-normal sm:text-xs">{t('deadlineHours')}</small></span>
+        <span className="rounded-xl bg-white/70 px-2 py-1 text-2xl font-bold tracking-tight sm:bg-transparent sm:px-0 sm:py-0 sm:text-4xl">{String(status.minutes).padStart(2, '0')}<small className="ml-1 text-[0.6rem] font-semibold uppercase tracking-normal sm:text-xs">{t('deadlineMinutes')}</small></span>
+        <span className="rounded-xl bg-white/70 px-2 py-1 text-2xl font-bold tracking-tight sm:bg-transparent sm:px-0 sm:py-0 sm:text-4xl">{String(status.seconds).padStart(2, '0')}<small className="ml-1 text-[0.6rem] font-semibold uppercase tracking-normal sm:text-xs">{t('deadlineSeconds')}</small></span>
       </div>
       <Link to="/students" className="brand-hover mt-4 inline-flex rounded-full bg-[#73b744] px-5 py-2.5 text-sm font-semibold text-white">
         {t('applyNow')}
