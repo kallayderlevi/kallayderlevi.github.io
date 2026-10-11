@@ -1,5 +1,7 @@
 import PageBanner from '../components/PageBanner'
 import ApplicationConsent from '../components/ApplicationConsent'
+import ApplicationDeadline from '../components/ApplicationDeadline'
+import useApplicationDeadline from '../hooks/useApplicationDeadline'
 import { useLanguage } from '../i18n'
 
 const timeline = [
@@ -46,6 +48,7 @@ const benefits = [
 
 export default function StudentsPage() {
   const { t } = useLanguage()
+  const { open: applicationsOpen } = useApplicationDeadline()
   return (
     <section className="mx-auto max-w-7xl px-6 py-20 lg:px-8 lg:py-24">
       <PageBanner
@@ -128,6 +131,7 @@ export default function StudentsPage() {
           <input type="hidden" name="_captcha" value="false" />
           <input type="hidden" name="_subject" value="180DC Budapest student application" />
           <input type="hidden" name="_next" value="https://www.180dcbudapest.org/thank-you" />
+          <input type="hidden" name="_autoresponse" value="Thank you for applying to 180 Degrees Consulting Budapest. We received your application and will contact you by email with the next steps." />
           <input type="text" name="_honey" tabIndex="-1" autoComplete="off" className="hidden" />
           <p className="text-xs font-semibold uppercase section-kicker text-slate-500">Apply now</p>
           <h2 className="mt-4 text-2xl font-semibold text-slate-900">Send us your CV.</h2>
@@ -135,8 +139,9 @@ export default function StudentsPage() {
             Upload your CV and tell us what you would like to contribute. Applications are sent to
             budapest@180dc.org.
           </p>
-          <p className="mt-3 text-sm font-semibold text-[#5d9f35]">Applications close October 31, 2026.</p>
+          <ApplicationDeadline />
 
+          <fieldset disabled={!applicationsOpen} className="contents">
           <div className="mt-6 grid gap-4 sm:grid-cols-2">
             <label className="grid gap-2 text-sm text-slate-700">Name<input name="name" required autoComplete="name" className="rounded-2xl border border-slate-200 bg-white px-4 py-3 outline-none" /></label>
             <label className="grid gap-2 text-sm text-slate-700">Email<input name="email" type="email" required autoComplete="email" className="rounded-2xl border border-slate-200 bg-white px-4 py-3 outline-none" /></label>
@@ -148,6 +153,7 @@ export default function StudentsPage() {
           <label className="mt-4 grid gap-2 text-sm text-slate-700">Motivation<textarea name="message" rows="5" required className="rounded-2xl border border-slate-200 bg-white px-4 py-3 outline-none" /></label>
           <ApplicationConsent />
           <button className="brand-hover mt-6 inline-flex rounded-full bg-[#73b744] px-6 py-3.5 text-sm font-semibold text-white">Submit Application</button>
+          </fieldset>
         </form>
       </div>
     </section>

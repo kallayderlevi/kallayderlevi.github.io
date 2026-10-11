@@ -66,6 +66,28 @@ export default function OurBranchPage() {
         ))}
       </div>
 
+      <section className="mt-20 border-t border-slate-200 pt-12">
+        <p className="text-xs font-semibold uppercase section-kicker text-slate-500">How we create value</p>
+        <h2 className="mt-3 max-w-3xl text-3xl font-semibold tracking-tight text-slate-900">Practical support with a measurable social purpose.</h2>
+        <div className="mt-8 grid gap-5 md:grid-cols-3">
+          <article className="brand-card-hover rounded-[1.75rem] border border-slate-200 bg-white p-6 shadow-glow">
+            <p className="text-3xl font-semibold text-[#73b744]">01</p>
+            <h3 className="mt-5 text-xl font-semibold text-slate-900">Clarify the challenge</h3>
+            <p className="mt-3 text-sm leading-7 text-slate-600">We turn an ambitious mission or operational problem into a focused brief with clear outcomes.</p>
+          </article>
+          <article className="brand-card-hover rounded-[1.75rem] border border-slate-200 bg-white p-6 shadow-glow">
+            <p className="text-3xl font-semibold text-[#73b744]">02</p>
+            <h3 className="mt-5 text-xl font-semibold text-slate-900">Build useful insight</h3>
+            <p className="mt-3 text-sm leading-7 text-slate-600">Student teams combine structured research, stakeholder perspectives, and practical analysis.</p>
+          </article>
+          <article className="brand-card-hover rounded-[1.75rem] border border-slate-200 bg-white p-6 shadow-glow">
+            <p className="text-3xl font-semibold text-[#73b744]">03</p>
+            <h3 className="mt-5 text-xl font-semibold text-slate-900">Leave a clear next step</h3>
+            <p className="mt-3 text-sm leading-7 text-slate-600">Every engagement ends with recommendations that organisations can own, prioritise, and act on.</p>
+          </article>
+        </div>
+      </section>
+
       {consultants.length > 0 && (
         <div className="mt-20">
           <p className="text-xs font-semibold uppercase section-kicker text-slate-500">Consultants</p>

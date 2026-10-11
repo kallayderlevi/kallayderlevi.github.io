@@ -1,3 +1,5 @@
+import { useState } from 'react'
+
 const collectedInformation = [
   'Name / Username',
   'Phone Numbers',
@@ -30,16 +32,65 @@ function Section({ title, children }) {
   )
 }
 
+function HungarianPolicy() {
+  return (
+    <>
+      <Section title="Adatkezelő adatai">
+        <ul className="list-disc space-y-2 pl-6">
+          <li><strong>Név:</strong> 180 Degrees Consulting Budapest Egyesület</li>
+          <li><strong>Székhely és levelezési cím:</strong> 1022 Budapest, Bimbó út 48-50. A ép. 3. ajtó</li>
+          <li><strong>E-mail:</strong> budapest@180dc.org</li>
+          <li><strong>Telefonszám:</strong> 00 36 20 333 9888</li>
+          <li><strong>Képviselő:</strong> Kállay Dér Levente</li>
+          <li><strong>Weboldal:</strong> www.180dcbudapest.org</li>
+        </ul>
+      </Section>
+      <Section title="A szabályzat célja">
+        <p>A szabályzat bemutatja, hogy az 180 Degrees Consulting Budapest Egyesület hogyan kezeli a nyilvántartásokat, hogyan gyűjt és dolgoz fel adatokat, valamint hogyan kezeli a személyes adatokat az alkalmazandó magyar és európai uniós jogszabályoknak, különösen a GDPR-nak megfelelően.</p>
+      </Section>
+      <Section title="Sütik és jogalap">
+        <p>Weboldalunk adatvédelmi és sütikkel kapcsolatos tájékoztatást nyújt. A sütik a böngésző beállításaiban letilthatók vagy törölhetők. A hozzájárulást igénylő sütik használata előtt tájékoztatjuk a látogatókat és hozzájárulást kérünk.</p>
+        <p>Adatkezelésünk jogalapját többek között az (EU) 2016/679 rendelet (GDPR), Magyarország Alaptörvénye, a Polgári Törvénykönyvről szóló 2013. évi V. törvény és az információs önrendelkezési jogról és az információszabadságról szóló 2011. évi CXII. törvény képezi.</p>
+      </Section>
+      <Section title="Milyen adatokat gyűjtünk?">
+        <ul className="list-disc space-y-2 pl-6">
+          <li>Név / felhasználónév</li><li>Telefonszám</li><li>E-mail-cím</li><li>Munkakör, tanulmányi és szakmai adatok, önéletrajz, motivációs levél és jelentkezési válaszok</li>
+        </ul>
+      </Section>
+      <Section title="Mire használjuk az adatokat?">
+        <ul className="list-disc space-y-2 pl-6"><li>Állás- és tagsági jelentkezések értékelésére, valamint a kiválasztási folyamat lebonyolítására.</li><li>Hírlevelek, frissítések és tájékoztató e-mailek küldésére.</li><li>A jelentkezés állapotával kapcsolatos időszakos tájékoztatásra.</li></ul>
+      </Section>
+      <Section title="Meddig őrizzük meg az adatokat?"><p>Az adatokat csak addig őrizzük meg, ameddig az adatkezelési célok teljesítéséhez, illetve jogi vagy hatósági kötelezettségeinkhez szükséges. Sikertelen jelentkezés esetén az önéletrajzot és a jelentkezési adatokat a kiválasztási folyamat lezárását követő 30–60 napon belül biztonságosan töröljük vagy megsemmisítjük.</p></Section>
+      <Section title="Az érintettek jogai">
+        <p>Az érintett jogosult tájékoztatást, hozzáférést, helyesbítést, törlést, az adatkezelés korlátozását és adathordozhatóságot kérni, továbbá jogosult tiltakozni a jogos érdeken vagy közérdeken alapuló adatkezelés ellen.</p>
+      </Section>
+      <Section title="Jogorvoslat és kapcsolat">
+        <p>Jogainak megsértése esetén a Fővárosi Törvényszékhez fordulhat, vagy vizsgálatot kezdeményezhet a Nemzeti Adatvédelmi és Információszabadság Hatóságnál (NAIH), 1125 Budapest, Szilágyi Erzsébet fasor 22/C, ugyfelszolgalat@naih.hu.</p>
+        <p>Kérdéseivel írjon a budapest@180dc.org címre, vagy postai úton a 1022 Budapest, Bimbó út 48-50. A ép. 3. ajtó címre.</p>
+      </Section>
+    </>
+  )
+}
+
 export default function PrivacyPolicyPage() {
+  const [language, setLanguage] = useState('en')
+
   return (
     <article className="mx-auto max-w-4xl px-6 py-20 lg:px-8 lg:py-24">
       <header className="border-b border-slate-200 pb-10">
         <p className="text-xs font-semibold uppercase tracking-[0.28em] text-[#5d9f35]">Legal</p>
         <h1 className="mt-4 text-4xl font-semibold tracking-tight text-slate-900 sm:text-5xl">Privacy Policy</h1>
-        <p className="mt-4 text-sm text-slate-500">Updated October 12th, 2026</p>
+        <div className="mt-5 flex flex-wrap items-center gap-3">
+          <p className="text-sm text-slate-500">Updated October 12th, 2026</p>
+          <div className="flex rounded-full border border-slate-200 p-1 text-xs font-semibold" aria-label="Privacy policy language">
+            <button type="button" onClick={() => setLanguage('en')} className={`rounded-full px-3 py-1.5 ${language === 'en' ? 'bg-[#73b744] text-white' : 'text-slate-600'}`}>English</button>
+            <button type="button" onClick={() => setLanguage('hu')} className={`rounded-full px-3 py-1.5 ${language === 'hu' ? 'bg-[#73b744] text-white' : 'text-slate-600'}`}>Magyar</button>
+          </div>
+        </div>
       </header>
 
       <div className="mt-10 space-y-10">
+        {language === 'hu' ? <HungarianPolicy /> : <>
         <Section title="Data Controller Details">
           <ul className="list-disc space-y-2 pl-6">
             <li><strong>Name:</strong> 180 Degrees Consulting Budapest Egyesület</li>
@@ -98,6 +149,7 @@ export default function PrivacyPolicyPage() {
         <Section title="Contact Us">
           <p>For questions regarding this Privacy Policy or the handling of your data, contact budapest@180dc.org, 1022 Budapest, Bimbó út 48-50. A ép. 3. ajtó, Hungary, or 00 36 30 718 9227.</p>
         </Section>
+        </>}
       </div>
     </article>
   )
