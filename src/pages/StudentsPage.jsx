@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import PageBanner from '../components/PageBanner'
 import ApplicationConsent from '../components/ApplicationConsent'
 import ApplicationDeadline from '../components/ApplicationDeadline'
@@ -42,7 +43,7 @@ export default function StudentsPage() {
   const { t } = useLanguage()
   const { open: applicationsOpen } = useApplicationDeadline()
   return (
-    <section className="mx-auto max-w-7xl px-6 py-20 lg:px-8 lg:py-24">
+    <section className="mx-auto max-w-7xl px-6 py-20 pb-32 lg:px-8 lg:py-24">
       <PageBanner
         eyebrow="Students"
         title={t('studentBanner')}
@@ -113,6 +114,7 @@ export default function StudentsPage() {
         </div>
 
         <form
+          id="student-application"
           className="min-w-0 rounded-[2rem] border border-slate-200 bg-slate-50 p-6 shadow-glow sm:p-10"
           action="https://formsubmit.co/budapest@180dc.org"
           method="POST"
@@ -145,6 +147,13 @@ export default function StudentsPage() {
           </fieldset>
         </form>
       </div>
+      {applicationsOpen && (
+        <div className="fixed inset-x-4 bottom-4 z-40 md:hidden">
+          <Link to="#student-application" className="brand-hover flex w-full items-center justify-center rounded-full bg-[#73b744] px-6 py-3.5 text-sm font-semibold text-white shadow-[0_10px_30px_rgba(93,159,53,0.3)]">
+            {t('mobileApply')}
+          </Link>
+        </div>
+      )}
     </section>
   )
 }

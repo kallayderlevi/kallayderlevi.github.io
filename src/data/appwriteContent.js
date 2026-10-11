@@ -9,7 +9,7 @@ const imageUrl = (value) => {
 }
 
 const mapPerson = (row) => ({ id: row.$id, imageFit: 'cover', imagePosition: 'center', sortOrder: '0', ...row, image: imageUrl(row.image || row.imageFileId) })
-const mapPost = (row) => ({ id: row.$id, ...row, copy: row.copy || row.summary || '', date: row.date || row.publishedAt || '' })
+const mapPost = (row) => ({ id: row.$id, ...row, category: row.category || 'Updates', copy: row.copy || row.summary || '', date: row.date || row.publishedAt || '' })
 
 async function listRows(tableId, mapper) {
   const response = await tables.listRows({ databaseId: appwriteConfig.databaseId, tableId })
@@ -44,7 +44,7 @@ async function saveRows(tableId, rows, kind) {
     delete rest.$tableId
     const rowId = id || ID.unique()
     const data = kind === 'post'
-      ? { title: rest.title, summary: copy, published: 'true', publishedAt: date || new Date().toISOString() }
+      ? { title: rest.title, category: rest.category || 'Updates', summary: copy, published: 'true', publishedAt: date || new Date().toISOString() }
       : { ...rest, imageFileId: image || '', imageFit: imageFit || 'cover', imagePosition: imagePosition || 'center', sortOrder: String(sortOrder || 0) }
     const params = { databaseId: appwriteConfig.databaseId, tableId, rowId, data }
     const operation = existing.some((row) => row.id === id) ? 'update' : 'create'

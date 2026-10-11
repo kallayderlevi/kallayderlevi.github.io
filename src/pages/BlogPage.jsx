@@ -38,7 +38,7 @@ export default function BlogPage() {
         {posts.map((post) => (
           <article key={post.id || post.title} className="group rounded-[2rem] border border-slate-200 bg-white p-7 shadow-glow transition duration-300 hover:-translate-y-1 hover:border-[#73b744]">
             <div className="flex items-center justify-between gap-3 text-xs uppercase tracking-[0.24em] text-slate-500">
-              <span className="rounded-full bg-[#edf7e8] px-3 py-1 text-[0.65rem] tracking-[0.18em] text-[#73b744]">180DC Budapest</span>
+              <span className="rounded-full bg-[#edf7e8] px-3 py-1 text-[0.65rem] tracking-[0.18em] text-[#73b744]">{t(post.category === 'Community' ? 'categoryCommunity' : post.category === 'Recruitment' ? 'categoryRecruitment' : post.category === 'Impact' ? 'categoryImpact' : 'categoryUpdates')}</span>
             </div>
             <h3 className="mt-6 text-2xl font-semibold tracking-tight text-slate-900">{t(post.id === 'launch' ? 'postLaunchTitle' : post.id === 'recruitment' ? 'postRecruitmentTitle' : post.id === 'ngo-consulting' ? 'postNgoTitle' : post.title)}</h3>
             <p className="mt-4 text-sm leading-7 text-slate-600">{t(post.id === 'launch' ? 'postLaunchCopy' : post.id === 'recruitment' ? 'postRecruitmentCopy' : post.id === 'ngo-consulting' ? 'postNgoCopy' : post.copy)}</p>

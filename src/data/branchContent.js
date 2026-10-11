@@ -12,9 +12,9 @@ export const defaultBoard = [
 export const defaultConsultants = []
 
 export const defaultPosts = [
-  { id: 'launch', title: '180DC Officially Launches in Budapest', copy: 'A milestone update introducing the new chapter, its vision, and the first opportunities for students and partners.', date: '2026-09-10' },
-  { id: 'recruitment', title: 'Spring Recruitment Now Open', copy: 'We are looking for ambitious students who want consulting experience, mentorship, and a real seat at the table.', date: '2026-09-10' },
-  { id: 'ngo-consulting', title: 'What It’s Like Consulting for an NGO', copy: 'A short preview of the kinds of challenges our teams will tackle and the skills students will build along the way.', date: '2026-09-10' },
+  { id: 'launch', category: 'Community', title: '180DC Officially Launches in Budapest', copy: 'A milestone update introducing the new chapter, its vision, and the first opportunities for students and partners.', date: '2026-09-10' },
+  { id: 'recruitment', category: 'Recruitment', title: 'Spring Recruitment Now Open', copy: 'We are looking for ambitious students who want consulting experience, mentorship, and a real seat at the table.', date: '2026-09-10' },
+  { id: 'ngo-consulting', category: 'Impact', title: 'What It’s Like Consulting for an NGO', copy: 'A short preview of the kinds of challenges our teams will tackle and the skills students will build along the way.', date: '2026-09-10' },
 ]
 
 export const defaultRecruitment = { open: true, deadline: '2026-10-31' }

@@ -26,7 +26,7 @@ export default function Blog() {
           <article key={post.title} className="group rounded-[2rem] border border-slate-200 bg-white p-6 transition hover:-translate-y-0.5 hover:border-slate-300">
             <div className="flex items-center justify-between text-xs uppercase tracking-[0.24em] text-slate-500">
               <span className="rounded-full border border-emerald-600/15 bg-emerald-50 px-3 py-1 text-[0.65rem] tracking-[0.18em] text-emerald-700">
-                {t('featured')}
+                {t(post.category === 'Community' ? 'categoryCommunity' : post.category === 'Recruitment' ? 'categoryRecruitment' : post.category === 'Impact' ? 'categoryImpact' : 'categoryUpdates')}
               </span>
             </div>
             <h3 className="mt-5 text-xl font-semibold tracking-tight text-slate-900">{t(post.id === 'launch' ? 'postLaunchTitle' : post.id === 'recruitment' ? 'postRecruitmentTitle' : post.id === 'ngo-consulting' ? 'postNgoTitle' : post.title)}</h3>
