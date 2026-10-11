@@ -16,7 +16,6 @@ export default function ApplicationConsent() {
           Privacy Policy
         </Link>
         .
-        <span className="mt-1 block text-xs text-slate-500">The detailed consent wording will be updated here.</span>
       </span>
     </label>
   )

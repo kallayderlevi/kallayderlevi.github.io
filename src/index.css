@@ -13,6 +13,11 @@ html {
   scroll-behavior: smooth;
 }
 
+:focus-visible {
+  outline: 3px solid #73b744;
+  outline-offset: 3px;
+}
+
 body {
   min-height: 100vh;
   margin: 0;

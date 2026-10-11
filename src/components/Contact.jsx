@@ -105,12 +105,15 @@ export default function Contact() {
         >
           <input type="hidden" name="_captcha" value="false" />
           <input type="hidden" name="_subject" value="180DC Budapest student application" />
+          <input type="hidden" name="_next" value="https://www.180dcbudapest.org/thank-you" />
+          <input type="text" name="_honey" tabIndex="-1" autoComplete="off" className="hidden" />
 
           <p className="text-xs font-semibold uppercase tracking-[0.28em] text-slate-500">Student application</p>
           <h3 className="mt-4 text-2xl font-semibold tracking-tight text-slate-900">Apply with your CV</h3>
           <p className="mt-4 text-sm leading-7 text-slate-600">
             Upload your CV here. This form is sent directly to budapest@180dc.org along with your message.
           </p>
+          <p className="mt-3 text-sm font-semibold text-emerald-700">Applications close October 31, 2026.</p>
 
           <div className="mt-8 grid gap-4 sm:grid-cols-2">
             <label className="grid gap-2 text-sm text-slate-700">
@@ -119,6 +122,8 @@ export default function Contact() {
                 name="name"
                 type="text"
                 placeholder="Alex Johnson"
+                required
+                autoComplete="name"
                 className="rounded-2xl border border-slate-200 bg-white px-4 py-3 text-slate-900 placeholder:text-slate-400 outline-none transition focus:border-emerald-500"
               />
             </label>
@@ -128,6 +133,8 @@ export default function Contact() {
                 name="email"
                 type="email"
                 placeholder="name@example.com"
+                required
+                autoComplete="email"
                 className="rounded-2xl border border-slate-200 bg-white px-4 py-3 text-slate-900 placeholder:text-slate-400 outline-none transition focus:border-emerald-500"
               />
             </label>
@@ -140,6 +147,8 @@ export default function Contact() {
                 name="university"
                 type="text"
                 placeholder="University in Budapest"
+                required
+                autoComplete="organization"
                 className="rounded-2xl border border-slate-200 bg-white px-4 py-3 text-slate-900 placeholder:text-slate-400 outline-none transition focus:border-emerald-500"
               />
             </label>
@@ -149,6 +158,7 @@ export default function Contact() {
                 name="cv"
                 type="file"
                 accept=".pdf,.doc,.docx"
+                required
                 className="rounded-2xl border border-slate-200 bg-white px-4 py-3 text-sm text-slate-700 file:mr-4 file:rounded-full file:border-0 file:bg-emerald-50 file:px-4 file:py-2 file:text-sm file:font-semibold file:text-emerald-700"
               />
             </label>
@@ -159,10 +169,13 @@ export default function Contact() {
             <textarea
               name="message"
               rows="6"
+              required
               placeholder="Tell us why you want to join 180DC Budapest."
               className="rounded-2xl border border-slate-200 bg-white px-4 py-3 text-slate-900 placeholder:text-slate-400 outline-none transition focus:border-emerald-500"
             />
           </label>
+
+          <p className="sr-only" aria-live="polite">All application fields are required.</p>
 
           <button
             type="submit"

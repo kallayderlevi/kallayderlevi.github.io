@@ -127,22 +127,25 @@ export default function StudentsPage() {
         >
           <input type="hidden" name="_captcha" value="false" />
           <input type="hidden" name="_subject" value="180DC Budapest student application" />
+          <input type="hidden" name="_next" value="https://www.180dcbudapest.org/thank-you" />
+          <input type="text" name="_honey" tabIndex="-1" autoComplete="off" className="hidden" />
           <p className="text-xs font-semibold uppercase section-kicker text-slate-500">Apply now</p>
           <h2 className="mt-4 text-2xl font-semibold text-slate-900">Send us your CV.</h2>
           <p className="mt-3 text-sm leading-7 text-slate-600">
             Upload your CV and tell us what you would like to contribute. Applications are sent to
             budapest@180dc.org.
           </p>
+          <p className="mt-3 text-sm font-semibold text-[#5d9f35]">Applications close October 31, 2026.</p>
 
           <div className="mt-6 grid gap-4 sm:grid-cols-2">
-            <label className="grid gap-2 text-sm text-slate-700">Name<input name="name" className="rounded-2xl border border-slate-200 bg-white px-4 py-3 outline-none" /></label>
-            <label className="grid gap-2 text-sm text-slate-700">Email<input name="email" type="email" className="rounded-2xl border border-slate-200 bg-white px-4 py-3 outline-none" /></label>
+            <label className="grid gap-2 text-sm text-slate-700">Name<input name="name" required autoComplete="name" className="rounded-2xl border border-slate-200 bg-white px-4 py-3 outline-none" /></label>
+            <label className="grid gap-2 text-sm text-slate-700">Email<input name="email" type="email" required autoComplete="email" className="rounded-2xl border border-slate-200 bg-white px-4 py-3 outline-none" /></label>
           </div>
           <div className="mt-4 grid gap-4 sm:grid-cols-2">
-            <label className="grid gap-2 text-sm text-slate-700">University<input name="university" className="rounded-2xl border border-slate-200 bg-white px-4 py-3 outline-none" /></label>
-            <label className="grid gap-2 text-sm text-slate-700">CV upload<input name="cv" type="file" accept=".pdf,.doc,.docx" className="rounded-2xl border border-slate-200 bg-white px-4 py-3 text-sm file:mr-4 file:rounded-full file:border-0 file:bg-[#edf7e8] file:px-4 file:py-2 file:font-semibold file:text-[#73b744]" /></label>
+            <label className="grid gap-2 text-sm text-slate-700">University<input name="university" required autoComplete="organization" className="rounded-2xl border border-slate-200 bg-white px-4 py-3 outline-none" /></label>
+            <label className="grid gap-2 text-sm text-slate-700">CV upload<input name="cv" type="file" accept=".pdf,.doc,.docx" required className="rounded-2xl border border-slate-200 bg-white px-4 py-3 text-sm file:mr-4 file:rounded-full file:border-0 file:bg-[#edf7e8] file:px-4 file:py-2 file:font-semibold file:text-[#73b744]" /></label>
           </div>
-          <label className="mt-4 grid gap-2 text-sm text-slate-700">Motivation<textarea name="message" rows="5" className="rounded-2xl border border-slate-200 bg-white px-4 py-3 outline-none" /></label>
+          <label className="mt-4 grid gap-2 text-sm text-slate-700">Motivation<textarea name="message" rows="5" required className="rounded-2xl border border-slate-200 bg-white px-4 py-3 outline-none" /></label>
           <ApplicationConsent />
           <button className="mt-6 inline-flex rounded-full bg-[#73b744] px-6 py-3.5 text-sm font-semibold text-white transition hover:bg-[#5d9f35]">Submit Application</button>
         </form>
