@@ -44,15 +44,32 @@ export default function StudentsPage() {
   const { t } = useLanguage()
   const { open: applicationsOpen } = useApplicationDeadline()
   const applicationFormRef = useRef(null)
-  const [showMobileApply, setShowMobileApply] = useState(true)
+  const [mobileApplyVisibility, setMobileApplyVisibility] = useState(1)
 
   useEffect(() => {
-    const form = applicationFormRef.current
-    if (!form) return undefined
-    const observer = new IntersectionObserver(([entry]) => setShowMobileApply(!entry.isIntersecting), { threshold: 0.15 })
-    observer.observe(form)
-    return () => observer.disconnect()
+    const updateVisibility = () => {
+      const form = applicationFormRef.current
+      if (!form) return
+      const formTop = form.getBoundingClientRect().top
+      const fadeStart = window.innerHeight * 0.85
+      const fadeEnd = window.innerHeight * 0.35
+      const progress = Math.min(1, Math.max(0, (fadeStart - formTop) / (fadeStart - fadeEnd)))
+      setMobileApplyVisibility(1 - progress)
+    }
+
+    updateVisibility()
+    window.addEventListener('scroll', updateVisibility, { passive: true })
+    window.addEventListener('resize', updateVisibility)
+    return () => {
+      window.removeEventListener('scroll', updateVisibility)
+      window.removeEventListener('resize', updateVisibility)
+    }
   }, [])
+
+  const scrollToApplication = (event) => {
+    event.preventDefault()
+    applicationFormRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+  }
 
   return (
     <section className="mx-auto max-w-7xl px-6 py-20 pb-32 lg:px-8 lg:py-24">
@@ -127,6 +144,7 @@ export default function StudentsPage() {
 
         <form
           id="student-application"
+          style={{ scrollMarginTop: '6rem' }}
           ref={applicationFormRef}
           className="min-w-0 rounded-[2rem] border border-slate-200 bg-slate-50 p-6 shadow-glow sm:p-10"
           action="https://formsubmit.co/budapest@180dc.org"
@@ -162,10 +180,15 @@ export default function StudentsPage() {
       </div>
       {applicationsOpen && (
         <div
-          aria-hidden={!showMobileApply}
-          className={`fixed inset-x-4 bottom-4 z-40 transition-all duration-300 md:hidden ${showMobileApply ? 'translate-y-0 opacity-100' : 'pointer-events-none translate-y-4 opacity-0'}`}
+          aria-hidden={mobileApplyVisibility < 0.05}
+          className="fixed inset-x-4 bottom-4 z-40 transition-[opacity,transform] duration-150 md:hidden"
+          style={{
+            opacity: mobileApplyVisibility,
+            transform: `translateY(${(1 - mobileApplyVisibility) * 120}px)`,
+            pointerEvents: mobileApplyVisibility < 0.05 ? 'none' : 'auto',
+          }}
         >
-          <Link to="#student-application" className="brand-hover flex w-full items-center justify-center rounded-full bg-[#73b744] px-6 py-3.5 text-sm font-semibold text-white shadow-[0_10px_30px_rgba(93,159,53,0.3)]">
+          <Link to="#student-application" onClick={scrollToApplication} className="brand-hover flex w-full items-center justify-center rounded-full bg-[#73b744] px-6 py-3.5 text-sm font-semibold text-white shadow-[0_10px_30px_rgba(93,159,53,0.3)]">
             {t('mobileApply')}
           </Link>
         </div>
