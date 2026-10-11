@@ -1,5 +1,5 @@
 import { appwriteConfig, ID, storage, tables } from '../lib/appwrite'
-import { defaultBoard, defaultConsultants, defaultPosts } from './branchContent'
+import { defaultBoard, defaultConsultants, defaultPosts, defaultRecruitment, getContent } from './branchContent'
 
 const imageUrl = (value) => {
   if (!value) return ''
@@ -26,6 +26,7 @@ export async function loadRemoteContent() {
     board: (board.length ? board : defaultBoard).sort((a, b) => Number(a.sortOrder || 0) - Number(b.sortOrder || 0)),
     consultants: (consultants.length ? consultants : defaultConsultants).sort((a, b) => Number(a.sortOrder || 0) - Number(b.sortOrder || 0)),
     posts: posts.length ? posts : defaultPosts,
+    recruitment: getContent().recruitment || defaultRecruitment,
   }
 }
 
@@ -45,6 +46,9 @@ async function saveRows(tableId, rows, kind) {
 }
 
 export async function saveRemoteContent(content) {
+  const localContent = getContent()
+  localContent.recruitment = content.recruitment || defaultRecruitment
+  localStorage.setItem('180dc-budapest-content', JSON.stringify(localContent))
   await Promise.all([
     saveRows(appwriteConfig.boardTableId, content.board, 'person'),
     saveRows(appwriteConfig.consultantsTableId, content.consultants, 'person'),

@@ -62,6 +62,11 @@ export default function OurBranchPage() {
               <a href={`mailto:${member.email}`} className="mt-4 block text-sm font-medium text-slate-500 hover:text-emerald-700">
                 {member.email}
               </a>
+              {member.showLinkedin && member.linkedin && (
+                <a href={member.linkedin} target="_blank" rel="noreferrer" aria-label={`${member.name} on LinkedIn`} title="LinkedIn" className="brand-hover mt-3 inline-flex h-8 w-8 items-center justify-center rounded-full bg-[#73b744] text-xs font-bold text-white">
+                  in
+                </a>
+              )}
             </div>
           </article>
         ))}
@@ -104,6 +109,7 @@ export default function OurBranchPage() {
                   <h3 className="mt-3 text-lg font-semibold text-slate-900">{member.name}</h3>
                   <p className="mt-2 text-sm leading-6 text-slate-600">{member.background}</p>
                   <a href={`mailto:${member.email}`} className="mt-4 block text-sm text-slate-500 hover:text-emerald-700">{member.email}</a>
+                  {member.showLinkedin && member.linkedin && <a href={member.linkedin} target="_blank" rel="noreferrer" aria-label={`${member.name} on LinkedIn`} title="LinkedIn" className="brand-hover mt-3 inline-flex h-8 w-8 items-center justify-center rounded-full bg-[#73b744] text-xs font-bold text-white">in</a>}
                 </div>
               </article>
             ))}

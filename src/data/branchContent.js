@@ -1,5 +1,5 @@
 export const defaultBoard = [
-  { id: 'president', role: 'President', name: 'Founding team member', background: 'Chapter leadership, strategy, and external representation.', email: 'budapest@180dc.org', image: '', imageFit: 'cover', imagePosition: 'center', sortOrder: '1' },
+  { id: 'president', role: 'President', name: 'Founding team member', background: 'Chapter leadership, strategy, and external representation.', email: 'budapest@180dc.org', image: '', linkedin: '', showLinkedin: false, imageFit: 'cover', imagePosition: 'center', sortOrder: '1' },
   { id: 'vice-president', role: 'Vice President', name: 'Founding team member', background: 'Internal coordination, planning, and chapter development.', email: 'budapest@180dc.org', image: '' },
   { id: 'client-relations', role: 'Director of Client Relations', name: 'Founding team member', background: 'Client conversations, project scoping, and relationship management.', email: 'budapest@180dc.org', image: '' },
   { id: 'partnerships', role: 'Director of Partnerships', name: 'Founding team member', background: 'University, corporate, and community partnerships.', email: 'budapest@180dc.org', image: '' },
@@ -17,14 +17,16 @@ export const defaultPosts = [
   { id: 'ngo-consulting', title: 'What It’s Like Consulting for an NGO', copy: 'A short preview of the kinds of challenges our teams will tackle and the skills students will build along the way.', date: '2026-09-10' },
 ]
 
+export const defaultRecruitment = { open: true, deadline: '2026-10-31' }
+
 const storageKey = '180dc-budapest-content'
 
 export function getContent() {
   try {
     const stored = localStorage.getItem(storageKey)
-    return stored ? JSON.parse(stored) : { board: defaultBoard, consultants: defaultConsultants, posts: defaultPosts }
+    return stored ? { recruitment: defaultRecruitment, ...JSON.parse(stored) } : { board: defaultBoard, consultants: defaultConsultants, posts: defaultPosts, recruitment: defaultRecruitment }
   } catch {
-    return { board: defaultBoard, consultants: defaultConsultants, posts: defaultPosts }
+    return { board: defaultBoard, consultants: defaultConsultants, posts: defaultPosts, recruitment: defaultRecruitment }
   }
 }
 
@@ -34,7 +36,7 @@ export function saveContent(content) {
 }
 
 export function resetContent() {
-  const content = { board: defaultBoard, consultants: defaultConsultants, posts: defaultPosts }
+  const content = { board: defaultBoard, consultants: defaultConsultants, posts: defaultPosts, recruitment: defaultRecruitment }
   saveContent(content)
   return content
 }

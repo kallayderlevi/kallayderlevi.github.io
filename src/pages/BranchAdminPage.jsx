@@ -40,6 +40,8 @@ function PersonFields({ person, onChange, onRemove }) {
         <label className="grid gap-2 text-sm text-slate-700">Role<input value={person.role} onChange={(event) => update('role', event.target.value)} className="rounded-xl border border-slate-200 px-3 py-2" /></label>
         <label className="grid gap-2 text-sm text-slate-700 sm:col-span-2">Background<textarea rows="3" value={person.background} onChange={(event) => update('background', event.target.value)} className="rounded-xl border border-slate-200 px-3 py-2" /></label>
         <label className="grid gap-2 text-sm text-slate-700">Email<input type="email" value={person.email} onChange={(event) => update('email', event.target.value)} className="rounded-xl border border-slate-200 px-3 py-2" /></label>
+        <label className="grid gap-2 text-sm text-slate-700">LinkedIn profile URL<input type="url" placeholder="https://www.linkedin.com/in/..." value={person.linkedin || ''} onChange={(event) => update('linkedin', event.target.value)} className="rounded-xl border border-slate-200 px-3 py-2" /></label>
+        <label className="flex items-center gap-2 text-sm text-slate-700"><input type="checkbox" checked={Boolean(person.showLinkedin)} onChange={(event) => update('showLinkedin', event.target.checked)} className="h-4 w-4 accent-[#73b744]" /> Show LinkedIn icon publicly</label>
         <ImageField value={person.image} onChange={(value) => update('image', value)} />
         <label className="grid gap-2 text-sm text-slate-700">Photo fit<select value={person.imageFit || 'cover'} onChange={(event) => update('imageFit', event.target.value)} className="rounded-xl border border-slate-200 px-3 py-2"><option value="cover">Fill frame</option><option value="contain">Show full photo</option></select></label>
         <label className="grid gap-2 text-sm text-slate-700">Photo position<select value={person.imagePosition || 'center'} onChange={(event) => update('imagePosition', event.target.value)} className="rounded-xl border border-slate-200 px-3 py-2"><option value="top">Top</option><option value="center">Center</option><option value="bottom">Bottom</option></select></label>
@@ -143,6 +145,15 @@ export default function BranchAdminPage() {
       {error && <p className="mt-5 rounded-2xl border border-red-200 bg-red-50 px-4 py-3 text-sm leading-6 text-red-700">{error}</p>}
 
       <div className="mt-12 space-y-12">
+        <section className="rounded-2xl border border-[#73b744]/30 bg-[#edf7e8] p-6">
+          <p className="text-xs font-semibold uppercase section-kicker text-[#5d9f35]">Recruitment</p>
+          <h2 className="mt-2 text-2xl font-semibold text-slate-900">Public application status</h2>
+          <div className="mt-5 grid gap-4 sm:grid-cols-2">
+            <label className="flex items-center gap-2 text-sm text-slate-700"><input type="checkbox" checked={content.recruitment?.open !== false} onChange={(event) => setContent({ ...content, recruitment: { ...content.recruitment, open: event.target.checked } })} className="h-4 w-4 accent-[#73b744]" /> Applications are open</label>
+            <label className="grid gap-2 text-sm text-slate-700">Deadline<input type="date" value={content.recruitment?.deadline || '2026-10-31'} onChange={(event) => setContent({ ...content, recruitment: { ...content.recruitment, deadline: event.target.value } })} className="rounded-xl border border-slate-200 px-3 py-2" /></label>
+          </div>
+        </section>
+
         <section>
           <div className="mb-5 flex items-end justify-between gap-4">
             <div><p className="text-xs font-semibold uppercase section-kicker text-slate-500">Executive committee</p><h2 className="mt-2 text-2xl font-semibold text-slate-900">Board members</h2></div>
