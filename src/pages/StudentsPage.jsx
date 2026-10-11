@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom'
+import { useEffect, useRef, useState } from 'react'
 import PageBanner from '../components/PageBanner'
 import ApplicationConsent from '../components/ApplicationConsent'
 import ApplicationDeadline from '../components/ApplicationDeadline'
@@ -42,6 +43,17 @@ const benefits = [
 export default function StudentsPage() {
   const { t } = useLanguage()
   const { open: applicationsOpen } = useApplicationDeadline()
+  const applicationFormRef = useRef(null)
+  const [showMobileApply, setShowMobileApply] = useState(true)
+
+  useEffect(() => {
+    const form = applicationFormRef.current
+    if (!form) return undefined
+    const observer = new IntersectionObserver(([entry]) => setShowMobileApply(!entry.isIntersecting), { threshold: 0.15 })
+    observer.observe(form)
+    return () => observer.disconnect()
+  }, [])
+
   return (
     <section className="mx-auto max-w-7xl px-6 py-20 pb-32 lg:px-8 lg:py-24">
       <PageBanner
@@ -115,6 +127,7 @@ export default function StudentsPage() {
 
         <form
           id="student-application"
+          ref={applicationFormRef}
           className="min-w-0 rounded-[2rem] border border-slate-200 bg-slate-50 p-6 shadow-glow sm:p-10"
           action="https://formsubmit.co/budapest@180dc.org"
           method="POST"
@@ -130,7 +143,7 @@ export default function StudentsPage() {
           <p className="mt-3 text-sm leading-7 text-slate-600">
             {t('applicationCopy')}
           </p>
-          <ApplicationDeadline />
+          <ApplicationDeadline showApply={false} />
 
           <fieldset disabled={!applicationsOpen} className="contents">
           <div className="mt-6 grid gap-4 sm:grid-cols-2">
@@ -147,7 +160,7 @@ export default function StudentsPage() {
           </fieldset>
         </form>
       </div>
-      {applicationsOpen && (
+      {applicationsOpen && showMobileApply && (
         <div className="fixed inset-x-4 bottom-4 z-40 md:hidden">
           <Link to="#student-application" className="brand-hover flex w-full items-center justify-center rounded-full bg-[#73b744] px-6 py-3.5 text-sm font-semibold text-white shadow-[0_10px_30px_rgba(93,159,53,0.3)]">
             {t('mobileApply')}
