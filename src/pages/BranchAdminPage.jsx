@@ -107,7 +107,12 @@ export default function BranchAdminPage() {
       setSavedContent(nextContent)
       setSaved(true)
       window.setTimeout(() => setSaved(false), 2500)
-    }).catch((saveError) => setError(`Save failed: ${saveError.message}`)).finally(() => setSaving(false))
+    }).catch((saveError) => {
+      const permissionHint = saveError.message?.includes('not authorized')
+        ? ' In Appwrite, grant the authenticated admin user Update permission on the board and consultants tables, and Create permission if adding new people.'
+        : ''
+      setError(`Save failed: ${saveError.message}${permissionHint}`)
+    }).finally(() => setSaving(false))
   }
 
   if (!loggedIn) {

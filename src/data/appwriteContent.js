@@ -32,16 +32,26 @@ export async function loadRemoteContent() {
 
 async function saveRows(tableId, rows, kind) {
   const existing = await listRows(tableId, kind === 'post' ? mapPost : mapPerson)
-  const incomingIds = new Set(rows.map((row) => row.id))
-  await Promise.all(existing.filter((row) => !incomingIds.has(row.id)).map((row) => tables.deleteRow({ databaseId: appwriteConfig.databaseId, tableId, rowId: row.id })))
+  const operationLabel = kind === 'post' ? 'blog post' : kind === 'board' ? 'board member' : 'consultant'
 
-  return Promise.all(rows.map(({ id, $id, $createdAt, $updatedAt, $permissions, $databaseId, $tableId, image, imageFit, imagePosition, sortOrder, copy, date, ...rest }) => {
+  return Promise.all(rows.map((row) => {
+    const { id, image, imageFit, imagePosition, sortOrder, copy, date, ...rest } = row
+    delete rest.$id
+    delete rest.$createdAt
+    delete rest.$updatedAt
+    delete rest.$permissions
+    delete rest.$databaseId
+    delete rest.$tableId
     const rowId = id || ID.unique()
     const data = kind === 'post'
       ? { title: rest.title, summary: copy, published: 'true', publishedAt: date || new Date().toISOString() }
       : { ...rest, imageFileId: image || '', imageFit: imageFit || 'cover', imagePosition: imagePosition || 'center', sortOrder: String(sortOrder || 0) }
     const params = { databaseId: appwriteConfig.databaseId, tableId, rowId, data }
-    return existing.some((row) => row.id === id) ? tables.updateRow(params) : tables.createRow(params)
+    const operation = existing.some((row) => row.id === id) ? 'update' : 'create'
+    const request = operation === 'update' ? tables.updateRow(params) : tables.createRow(params)
+    return request.catch((error) => {
+      throw new Error(`Could not ${operation} ${operationLabel} in Appwrite table ${tableId}: ${error.message}`)
+    })
   }))
 }
 
@@ -50,8 +60,8 @@ export async function saveRemoteContent(content) {
   localContent.recruitment = content.recruitment || defaultRecruitment
   localStorage.setItem('180dc-budapest-content', JSON.stringify(localContent))
   await Promise.all([
-    saveRows(appwriteConfig.boardTableId, content.board, 'person'),
-    saveRows(appwriteConfig.consultantsTableId, content.consultants, 'person'),
+    saveRows(appwriteConfig.boardTableId, content.board, 'board'),
+    saveRows(appwriteConfig.consultantsTableId, content.consultants, 'consultant'),
     saveRows(appwriteConfig.postsTableId, content.posts, 'post'),
   ])
   return loadRemoteContent()
