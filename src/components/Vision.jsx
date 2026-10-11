@@ -7,7 +7,7 @@ export default function Vision() {
 function VisionContent() {
   const { t } = useLanguage()
   return (
-    <section id="vision" className="relative mx-auto max-w-7xl px-6 py-20 lg:px-8 lg:py-28">
+    <section id="vision" className="relative mx-auto max-w-7xl rounded-[2rem] bg-slate-100/80 px-6 py-20 lg:px-8 lg:py-28">
       <div className="grid items-center gap-10 lg:grid-cols-[0.85fr_1.15fr] lg:gap-16">
         <div>
           <p className="text-xs font-semibold uppercase section-kicker text-slate-500">{t('vision')}</p>

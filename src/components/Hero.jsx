@@ -21,20 +21,20 @@ export default function Hero() {
             <span className="h-2 w-2 rounded-full bg-emerald-600" />
             {t('heroNote')}
           </div>
-          <div className="max-w-xl">
+          <div className="mt-5 max-w-xl">
             <ApplicationDeadline />
           </div>
 
-          <div className="mt-10 flex flex-col gap-4 sm:flex-row">
+          <div className="mt-8 flex flex-col gap-4 sm:flex-row">
             <a
               href="/clients"
-              className="brand-hover inline-flex items-center justify-center rounded-full bg-emerald-600 px-6 py-3.5 text-sm font-semibold text-white"
+              className="brand-hover inline-flex items-center justify-center rounded-full bg-emerald-600 px-7 py-4 text-base font-semibold text-white shadow-[0_10px_25px_rgba(115,183,68,0.24)]"
             >
               {t('forClientsCta')}
             </a>
             <a
               href="/students"
-              className="brand-link-hover inline-flex items-center justify-center rounded-full border border-slate-200 bg-white px-6 py-3.5 text-sm font-semibold text-slate-700"
+              className="brand-link-hover inline-flex items-center justify-center rounded-full border border-slate-200 bg-white px-7 py-4 text-base font-semibold text-slate-700"
             >
               {t('joinStudentCta')}
             </a>

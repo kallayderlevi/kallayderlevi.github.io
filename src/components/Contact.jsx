@@ -170,7 +170,7 @@ export default function Contact() {
                 type="file"
                 accept=".pdf,.doc,.docx"
                 required
-                className="rounded-2xl border border-slate-200 bg-white px-4 py-3 text-sm text-slate-700 file:mr-4 file:rounded-full file:border-0 file:bg-emerald-50 file:px-4 file:py-2 file:text-sm file:font-semibold file:text-emerald-700"
+                className="mt-1 rounded-xl border border-white bg-white px-3 py-3 text-sm text-slate-700 file:mr-3 file:rounded-full file:border-0 file:bg-[#73b744] file:px-3 file:py-2 file:text-sm file:font-semibold file:text-white"
               />
             </label>
           </div>

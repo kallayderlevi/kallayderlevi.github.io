@@ -16,7 +16,7 @@ export default function Blog() {
   }
 
   return (
-    <section id="blog" className="mx-auto max-w-7xl px-6 py-20 lg:px-8 lg:py-24">
+    <section id="blog" className="relative mx-auto max-w-7xl rounded-[2rem] bg-slate-100/80 px-6 py-20 lg:px-8 lg:py-24">
       <div className="flex items-end justify-between gap-6">
         <div>
           <p className="text-xs font-semibold uppercase tracking-[0.28em] text-slate-500">{t('blogEyebrow')}</p>

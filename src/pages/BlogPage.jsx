@@ -47,7 +47,7 @@ export default function BlogPage() {
         {posts.map((post) => (
           <article key={post.id || post.title} className="brand-card-hover group rounded-[2rem] border border-slate-200 bg-white p-7 shadow-glow">
             <div className="flex items-center justify-between gap-3 text-xs uppercase tracking-[0.24em] text-slate-500">
-              <span className="rounded-full bg-[#edf7e8] px-3 py-1 text-[0.65rem] tracking-[0.18em] text-[#73b744]">{t(post.category === 'Community' ? 'categoryCommunity' : post.category === 'Recruitment' ? 'categoryRecruitment' : post.category === 'Impact' ? 'categoryImpact' : 'categoryUpdates')}</span>
+              <span className={`rounded-full px-3 py-1 text-[0.65rem] tracking-[0.18em] ${post.category === 'Recruitment' ? 'bg-amber-50 text-amber-700' : post.category === 'Impact' ? 'bg-sky-50 text-sky-700' : 'bg-[#edf7e8] text-[#73b744]'}`}>{t(post.category === 'Community' ? 'categoryCommunity' : post.category === 'Recruitment' ? 'categoryRecruitment' : post.category === 'Impact' ? 'categoryImpact' : 'categoryUpdates')}</span>
             </div>
             <h3 className="mt-6 text-2xl font-semibold tracking-tight text-slate-900">{postText(post, 'title')}</h3>
             <p className="mt-4 text-sm leading-7 text-slate-600">{postText(post, 'copy')}</p>

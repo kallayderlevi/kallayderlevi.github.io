@@ -22,7 +22,7 @@ const routes = [
 export default function Services() {
   const { t } = useLanguage()
   return (
-    <section id="services" className="mx-auto max-w-7xl px-6 py-20 lg:px-8 lg:py-24">
+    <section id="services" className="relative mx-auto max-w-7xl bg-white px-6 py-20 lg:px-8 lg:py-24">
       <div className="mb-8 max-w-3xl">
         <p className="text-xs font-semibold uppercase section-kicker text-slate-500">{t('pathsEyebrow')}</p>
         <h2 className="mt-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl">
