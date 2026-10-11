@@ -4,6 +4,7 @@ import Footer from './components/Footer'
 import Hero from './components/Hero'
 import Navbar from './components/Navbar'
 import Services from './components/Services'
+import Stats from './components/Stats'
 import Vision from './components/Vision'
 import { useEffect } from 'react'
 import { BrowserRouter, Navigate, Route, Routes, useLocation } from 'react-router-dom'
@@ -45,8 +46,9 @@ export default function App() {
               element={
                 <HomePage>
                   <BranchBanner />
-                  <Vision />
                   <Hero />
+                  <Stats />
+                  <Vision />
                   <Services />
                   <Blog />
                 </HomePage>
