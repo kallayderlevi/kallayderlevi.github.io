@@ -18,7 +18,7 @@ export default function Hero() {
 
           <div className="mt-8 inline-flex items-center gap-3 rounded-full border border-slate-200 bg-white px-4 py-2 text-sm text-slate-600 shadow-sm">
             <span className="h-2 w-2 rounded-full bg-emerald-600" />
-            A new chapter, built with the tone of an established consulting team.
+            {t('heroNote')}
           </div>
 
           <div className="mt-10 flex flex-col gap-4 sm:flex-row">

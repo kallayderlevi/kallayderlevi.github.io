@@ -24,7 +24,7 @@ export default function Footer() {
             alt="180 Degrees Consulting Budapest"
             className="h-16 w-auto max-w-[270px] object-contain object-left"
           />
-          <p className="mt-2 text-sm text-slate-500">Branch of 180 Degrees Consulting. Built for social impact.</p>
+          <p className="mt-2 text-sm text-slate-500">{t('footerTagline')}</p>
           <p className="mt-4 text-xs font-semibold uppercase tracking-[0.2em] text-[#5d9f35]">{t('findUs')}</p>
           <div className="mt-3">
             <SocialLinks compact />
@@ -41,7 +41,7 @@ export default function Footer() {
       </div>
 
       <div className="border-t border-slate-200 px-6 py-4 text-center text-xs text-slate-500 lg:px-8">
-        © 2026 180 Degrees Consulting Budapest. All rights reserved.
+        {t('copyright')}
       </div>
     </footer>
   )

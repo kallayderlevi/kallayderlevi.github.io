@@ -16,8 +16,7 @@ function VisionContent() {
             {t('visionCopy')}
           </p>
           <p className="mt-5 text-base leading-8 text-slate-600">
-            The name 180 Degrees reflects the transformation we aim to create: turning good organisations into great
-            organisations, challenges into opportunities, and ideas into reality.
+            {t('visionTransformation')}
           </p>
           <a
             href="/our-branch"
@@ -40,7 +39,7 @@ function VisionContent() {
           </div>
           <div className="flex items-center gap-3 px-3 py-4 text-white">
             <img src="/brand/globe-green.png" alt="" className="h-10 w-10 object-contain" />
-            <p className="text-sm text-slate-300">Discover the 180DC vision and global community.</p>
+            <p className="text-sm text-slate-300">{t('visionVideoCaption')}</p>
           </div>
         </div>
       </div>
