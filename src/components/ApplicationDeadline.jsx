@@ -11,7 +11,7 @@ export default function ApplicationDeadline() {
 
   return (
     <p className="mt-3 rounded-xl bg-[#edf7e8] px-3 py-2 text-sm font-semibold text-[#5d9f35]" role="status">
-      {t('deadlineOpen')} {status.days} {t('deadlineDays')} {t('deadlineAnd')} {status.hours} {t('deadlineHours')} {t('deadlineRemaining')}.
+      {t('deadlineOpen')} {status.days} {t('deadlineDays')}, {String(status.hours).padStart(2, '0')} {t('deadlineHours')}, {String(status.minutes).padStart(2, '0')} {t('deadlineMinutes')}, {String(status.seconds).padStart(2, '0')} {t('deadlineSeconds')} {t('deadlineRemaining')}.
     </p>
   )
 }
