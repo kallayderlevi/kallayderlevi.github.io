@@ -1,7 +1,9 @@
 import { useBranchContent } from '../hooks/useBranchContent'
+import { useLanguage } from '../i18n'
 
 export default function OurBranchPage() {
   const { board, consultants } = useBranchContent()
+  const { t } = useLanguage()
   const photoClass = (member, fallback) => member.image
     ? `${member.imageFit === 'contain' ? 'object-contain bg-slate-100' : 'object-cover'} ${member.imagePosition === 'top' ? 'object-top' : member.imagePosition === 'bottom' ? 'object-bottom' : 'object-center'} ${fallback}`
     : fallback
@@ -10,20 +12,19 @@ export default function OurBranchPage() {
     <section className="mx-auto max-w-7xl px-6 py-20 lg:px-8 lg:py-24">
       <div className="grid gap-8 lg:grid-cols-[1.05fr_0.95fr] lg:items-end">
         <div className="max-w-3xl">
-          <p className="text-xs font-semibold uppercase section-kicker text-slate-500">Our Branch</p>
+          <p className="text-xs font-semibold uppercase section-kicker text-slate-500">{t('ourBranchLabel')}</p>
           <h1 className="mt-4 text-4xl font-semibold tracking-tight text-slate-900 sm:text-5xl">
-            Meet 180DC Budapest.
+            {t('meetBudapest')}
           </h1>
           <p className="mt-5 text-lg leading-8 text-slate-600">
-            A student-led consulting branch connecting Budapest&apos;s university talent with organisations creating
-            positive social impact.
+            {t('branchIntro')}
           </p>
         </div>
 
         <div className="rounded-[2rem] border border-slate-200 bg-white p-6 shadow-glow sm:p-8">
-          <img src="/brand/globe-green.png" alt="180 Degrees Consulting globe mark" className="h-20 w-20 object-contain" />
+          <img src="/brand/globe-green.png" alt={t('globeAlt')} className="h-20 w-20 object-contain" />
           <p className="mt-4 text-sm leading-7 text-slate-600">
-            Our branch brings together people from business, engineering, law, social sciences, and beyond.
+            {t('branchDisciplines')}
           </p>
           <a
             href="mailto:budapest@180dc.org"
@@ -36,8 +37,8 @@ export default function OurBranchPage() {
 
       <div className="mt-16 flex items-end justify-between gap-6">
         <div>
-          <p className="text-xs font-semibold uppercase section-kicker text-slate-500">Executive Committee</p>
-          <h2 className="mt-3 text-3xl font-semibold tracking-tight text-slate-900">The people behind the branch.</h2>
+          <p className="text-xs font-semibold uppercase section-kicker text-slate-500">{t('executiveCommittee')}</p>
+          <h2 className="mt-3 text-3xl font-semibold tracking-tight text-slate-900">{t('peopleBehind')}</h2>
         </div>
       </div>
 
@@ -67,31 +68,31 @@ export default function OurBranchPage() {
       </div>
 
       <section className="mt-20 border-t border-slate-200 pt-12">
-        <p className="text-xs font-semibold uppercase section-kicker text-slate-500">How we create value</p>
-        <h2 className="mt-3 max-w-3xl text-3xl font-semibold tracking-tight text-slate-900">Practical support with a measurable social purpose.</h2>
+        <p className="text-xs font-semibold uppercase section-kicker text-slate-500">{t('valueEyebrow')}</p>
+        <h2 className="mt-3 max-w-3xl text-3xl font-semibold tracking-tight text-slate-900">{t('valueTitle')}</h2>
         <div className="mt-8 grid gap-5 md:grid-cols-3">
           <article className="brand-card-hover rounded-[1.75rem] border border-slate-200 bg-white p-6 shadow-glow">
             <p className="text-3xl font-semibold text-[#73b744]">01</p>
-            <h3 className="mt-5 text-xl font-semibold text-slate-900">Clarify the challenge</h3>
-            <p className="mt-3 text-sm leading-7 text-slate-600">We turn an ambitious mission or operational problem into a focused brief with clear outcomes.</p>
+            <h3 className="mt-5 text-xl font-semibold text-slate-900">{t('clarifyTitle')}</h3>
+            <p className="mt-3 text-sm leading-7 text-slate-600">{t('clarifyCopy')}</p>
           </article>
           <article className="brand-card-hover rounded-[1.75rem] border border-slate-200 bg-white p-6 shadow-glow">
             <p className="text-3xl font-semibold text-[#73b744]">02</p>
-            <h3 className="mt-5 text-xl font-semibold text-slate-900">Build useful insight</h3>
-            <p className="mt-3 text-sm leading-7 text-slate-600">Student teams combine structured research, stakeholder perspectives, and practical analysis.</p>
+            <h3 className="mt-5 text-xl font-semibold text-slate-900">{t('insightTitle')}</h3>
+            <p className="mt-3 text-sm leading-7 text-slate-600">{t('insightCopy')}</p>
           </article>
           <article className="brand-card-hover rounded-[1.75rem] border border-slate-200 bg-white p-6 shadow-glow">
             <p className="text-3xl font-semibold text-[#73b744]">03</p>
-            <h3 className="mt-5 text-xl font-semibold text-slate-900">Leave a clear next step</h3>
-            <p className="mt-3 text-sm leading-7 text-slate-600">Every engagement ends with recommendations that organisations can own, prioritise, and act on.</p>
+            <h3 className="mt-5 text-xl font-semibold text-slate-900">{t('nextStepTitle')}</h3>
+            <p className="mt-3 text-sm leading-7 text-slate-600">{t('nextStepCopy')}</p>
           </article>
         </div>
       </section>
 
       {consultants.length > 0 && (
         <div className="mt-20">
-          <p className="text-xs font-semibold uppercase section-kicker text-slate-500">Consultants</p>
-          <h2 className="mt-3 text-3xl font-semibold tracking-tight text-slate-900">Our consulting community.</h2>
+          <p className="text-xs font-semibold uppercase section-kicker text-slate-500">{t('consultantsLabel')}</p>
+          <h2 className="mt-3 text-3xl font-semibold tracking-tight text-slate-900">{t('communityHeading')}</h2>
           <div className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
             {consultants.map((member) => (
               <article key={member.id} className="overflow-hidden rounded-[1.75rem] border border-slate-200 bg-white shadow-glow">
