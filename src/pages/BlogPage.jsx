@@ -5,6 +5,15 @@ import { useLanguage } from '../i18n'
 export default function BlogPage() {
   const { posts } = useBranchContent()
   const { t } = useLanguage()
+  const postText = (post, field) => {
+    const defaultPosts = {
+      launch: { title: '180DC Officially Launches in Budapest', copy: 'A milestone update introducing the new chapter, its vision, and the first opportunities for students and partners.', titleKey: 'postLaunchTitle', copyKey: 'postLaunchCopy' },
+      recruitment: { title: 'Spring Recruitment Now Open', copy: 'We are looking for ambitious students who want consulting experience, mentorship, and a real seat at the table.', titleKey: 'postRecruitmentTitle', copyKey: 'postRecruitmentCopy' },
+      'ngo-consulting': { title: 'What It’s Like Consulting for an NGO', copy: 'A short preview of the kinds of challenges our teams will tackle and the skills students will build along the way.', titleKey: 'postNgoTitle', copyKey: 'postNgoCopy' },
+    }
+    const fallback = defaultPosts[post.id]
+    return fallback && post[field] === fallback[field] ? t(fallback[`${field}Key`]) : post[field]
+  }
 
   return (
     <section className="mx-auto max-w-7xl px-6 py-20 lg:px-8 lg:py-24">
@@ -40,8 +49,8 @@ export default function BlogPage() {
             <div className="flex items-center justify-between gap-3 text-xs uppercase tracking-[0.24em] text-slate-500">
               <span className="rounded-full bg-[#edf7e8] px-3 py-1 text-[0.65rem] tracking-[0.18em] text-[#73b744]">{t(post.category === 'Community' ? 'categoryCommunity' : post.category === 'Recruitment' ? 'categoryRecruitment' : post.category === 'Impact' ? 'categoryImpact' : 'categoryUpdates')}</span>
             </div>
-            <h3 className="mt-6 text-2xl font-semibold tracking-tight text-slate-900">{t(post.id === 'launch' ? 'postLaunchTitle' : post.id === 'recruitment' ? 'postRecruitmentTitle' : post.id === 'ngo-consulting' ? 'postNgoTitle' : post.title)}</h3>
-            <p className="mt-4 text-sm leading-7 text-slate-600">{t(post.id === 'launch' ? 'postLaunchCopy' : post.id === 'recruitment' ? 'postRecruitmentCopy' : post.id === 'ngo-consulting' ? 'postNgoCopy' : post.copy)}</p>
+            <h3 className="mt-6 text-2xl font-semibold tracking-tight text-slate-900">{postText(post, 'title')}</h3>
+            <p className="mt-4 text-sm leading-7 text-slate-600">{postText(post, 'copy')}</p>
             <div className="mt-7 h-1 w-12 rounded-full bg-[#73b744] transition-all duration-300 group-hover:w-24" />
             <p className="mt-5 text-xs font-semibold uppercase tracking-[0.2em] text-slate-500">{post.date || t('branchUpdate')}</p>
           </article>

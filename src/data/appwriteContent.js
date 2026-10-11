@@ -11,6 +11,14 @@ const imageUrl = (value) => {
 const mapPerson = (row) => ({ id: row.$id, imageFit: 'cover', imagePosition: 'center', sortOrder: '0', ...row, image: imageUrl(row.image || row.imageFileId) })
 const mapPost = (row) => ({ id: row.$id, ...row, category: row.category || 'Updates', copy: row.copy || row.summary || '', date: row.date || row.publishedAt || '' })
 
+const localPostCategories = () => {
+  try {
+    return new Map((getContent().posts || []).map((post) => [post.id, post.category]))
+  } catch {
+    return new Map()
+  }
+}
+
 async function listRows(tableId, mapper) {
   const response = await tables.listRows({ databaseId: appwriteConfig.databaseId, tableId })
   return response.rows.map(mapper)
@@ -25,7 +33,9 @@ export async function loadRemoteContent() {
   return {
     board: (board.length ? board : defaultBoard).sort((a, b) => Number(a.sortOrder || 0) - Number(b.sortOrder || 0)),
     consultants: (consultants.length ? consultants : defaultConsultants).sort((a, b) => Number(a.sortOrder || 0) - Number(b.sortOrder || 0)),
-    posts: posts.length ? posts : defaultPosts,
+    posts: posts.length
+      ? posts.map((post) => ({ ...post, category: post.category || localPostCategories().get(post.id) || 'Updates' }))
+      : defaultPosts,
     recruitment: getContent().recruitment || defaultRecruitment,
   }
 }
@@ -44,7 +54,7 @@ async function saveRows(tableId, rows, kind) {
     delete rest.$tableId
     const rowId = id || ID.unique()
     const data = kind === 'post'
-      ? { title: rest.title, category: rest.category || 'Updates', summary: copy, published: 'true', publishedAt: date || new Date().toISOString() }
+      ? { title: rest.title, summary: copy, published: 'true', publishedAt: date || new Date().toISOString() }
       : { ...rest, imageFileId: image || '', imageFit: imageFit || 'cover', imagePosition: imagePosition || 'center', sortOrder: String(sortOrder || 0) }
     const params = { databaseId: appwriteConfig.databaseId, tableId, rowId, data }
     const operation = existing.some((row) => row.id === id) ? 'update' : 'create'
