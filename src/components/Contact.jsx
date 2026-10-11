@@ -90,7 +90,7 @@ export default function Contact() {
 
           <button
             type="submit"
-            className="mt-6 inline-flex items-center justify-center rounded-full bg-emerald-600 px-6 py-3.5 text-sm font-semibold text-white transition hover:bg-emerald-700"
+            className="brand-hover mt-6 inline-flex items-center justify-center rounded-full bg-emerald-600 px-6 py-3.5 text-sm font-semibold text-white"
           >
             Send Inquiry
           </button>
@@ -179,7 +179,7 @@ export default function Contact() {
 
           <button
             type="submit"
-            className="mt-6 inline-flex items-center justify-center rounded-full bg-slate-900 px-6 py-3.5 text-sm font-semibold text-white transition hover:bg-slate-700"
+            className="brand-hover mt-6 inline-flex items-center justify-center rounded-full bg-slate-900 px-6 py-3.5 text-sm font-semibold text-white"
           >
             Submit Application
           </button>

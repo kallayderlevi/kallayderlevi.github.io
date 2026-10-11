@@ -6,7 +6,7 @@ export default function ThankYouPage() {
       <p className="mx-auto mt-5 max-w-2xl text-lg leading-8 text-slate-600">
         We have received your application and will contact you by email with the next steps.
       </p>
-      <a href="/" className="mt-8 inline-flex rounded-full bg-[#73b744] px-6 py-3.5 text-sm font-semibold text-white transition hover:bg-[#5d9f35]">
+      <a href="/" className="brand-hover mt-8 inline-flex rounded-full bg-[#73b744] px-6 py-3.5 text-sm font-semibold text-white">
         Back to homepage
       </a>
     </section>

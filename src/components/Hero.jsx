@@ -24,13 +24,13 @@ export default function Hero() {
           <div className="mt-10 flex flex-col gap-4 sm:flex-row">
             <a
               href="/clients"
-              className="inline-flex items-center justify-center rounded-full bg-emerald-600 px-6 py-3.5 text-sm font-semibold text-white transition hover:bg-emerald-700"
+              className="brand-hover inline-flex items-center justify-center rounded-full bg-emerald-600 px-6 py-3.5 text-sm font-semibold text-white"
             >
               {t('forClientsCta')}
             </a>
             <a
               href="/students"
-              className="inline-flex items-center justify-center rounded-full border border-slate-200 bg-white px-6 py-3.5 text-sm font-semibold text-slate-700 transition hover:border-slate-300 hover:bg-slate-50"
+              className="brand-link-hover inline-flex items-center justify-center rounded-full border border-slate-200 bg-white px-6 py-3.5 text-sm font-semibold text-slate-700"
             >
               {t('joinStudentCta')}
             </a>

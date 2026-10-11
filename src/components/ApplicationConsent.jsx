@@ -12,7 +12,7 @@ export default function ApplicationConsent() {
       />
       <span>
         I consent to the processing of my personal data for recruitment purposes as described in the{' '}
-        <Link to="/privacy-policy" target="_blank" rel="noreferrer" className="font-semibold text-[#5d9f35] underline underline-offset-2">
+        <Link to="/privacy-policy" target="_blank" rel="noreferrer" className="brand-link-hover rounded-sm font-semibold text-[#5d9f35] underline underline-offset-2">
           Privacy Policy
         </Link>
         .

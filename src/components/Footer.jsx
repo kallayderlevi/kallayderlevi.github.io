@@ -33,7 +33,7 @@ export default function Footer() {
 
         <div className="flex flex-wrap gap-x-5 gap-y-2 text-sm text-slate-500">
           {footerLinks.map((link) => (
-            <Link key={link.label} to={link.href} className="transition hover:text-slate-900">
+            <Link key={link.label} to={link.href} className="brand-link-hover rounded-md px-1 py-0.5">
               {link.label}
             </Link>
           ))}

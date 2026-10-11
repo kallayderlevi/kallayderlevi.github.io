@@ -147,7 +147,7 @@ export default function StudentsPage() {
           </div>
           <label className="mt-4 grid gap-2 text-sm text-slate-700">Motivation<textarea name="message" rows="5" required className="rounded-2xl border border-slate-200 bg-white px-4 py-3 outline-none" /></label>
           <ApplicationConsent />
-          <button className="mt-6 inline-flex rounded-full bg-[#73b744] px-6 py-3.5 text-sm font-semibold text-white transition hover:bg-[#5d9f35]">Submit Application</button>
+          <button className="brand-hover mt-6 inline-flex rounded-full bg-[#73b744] px-6 py-3.5 text-sm font-semibold text-white">Submit Application</button>
         </form>
       </div>
     </section>

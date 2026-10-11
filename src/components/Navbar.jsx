@@ -3,16 +3,6 @@ import { NavLink } from 'react-router-dom'
 import { useLanguage } from '../i18n'
 import LanguageSwitcher from './LanguageSwitcher'
 
-const links = [
-  { label: 'Our Vision', href: '/#vision' },
-  { label: 'Clients', href: '/clients' },
-  { label: 'Partners', href: '/partners' },
-  { label: 'Students', href: '/students' },
-  { label: 'Blog', href: '/blog' },
-  { label: 'Contact', href: '/contact' },
-  { label: 'Our Branch', href: '/our-branch' },
-]
-
 export default function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false)
   const { t } = useLanguage()
@@ -35,7 +25,7 @@ export default function Navbar() {
               key={link.label}
               to={link.href}
               className={({ isActive }) =>
-                `text-sm transition ${isActive ? 'font-semibold text-slate-900' : 'text-slate-600 hover:text-slate-900'}`
+                `brand-link-hover rounded-lg px-2 py-1 text-sm ${isActive ? 'font-semibold text-[#5d9f35]' : 'text-slate-600'}`
               }
             >
               {link.label}
@@ -47,13 +37,13 @@ export default function Navbar() {
           <LanguageSwitcher />
           <a
             href="/clients"
-            className="rounded-full border border-emerald-600/20 bg-emerald-600 px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-emerald-700"
+            className="brand-hover rounded-full border border-emerald-600/20 bg-emerald-600 px-5 py-2.5 text-sm font-semibold text-white"
           >
             For Clients
           </a>
           <a
             href="/students"
-            className="rounded-full border border-slate-200 px-5 py-2.5 text-sm font-semibold text-slate-700 transition hover:border-slate-300 hover:bg-slate-50"
+            className="brand-link-hover rounded-full border border-slate-200 px-5 py-2.5 text-sm font-semibold text-slate-700"
           >
             Join as Student
           </a>
@@ -70,7 +60,7 @@ export default function Navbar() {
         <button
           type="button"
           onClick={() => setMobileOpen((open) => !open)}
-          className="order-first flex h-11 w-11 items-center justify-center rounded-full border border-slate-200 text-slate-700 lg:hidden"
+          className="brand-link-hover order-first flex h-11 w-11 items-center justify-center rounded-full border border-slate-200 text-slate-700 lg:hidden"
           aria-label={mobileOpen ? 'Close menu' : 'Open menu'}
           aria-expanded={mobileOpen}
         >
@@ -86,15 +76,15 @@ export default function Navbar() {
                 key={link.label}
                 to={link.href}
                 onClick={() => setMobileOpen(false)}
-                className={({ isActive }) => `rounded-xl px-4 py-3 text-sm ${isActive ? 'bg-[#edf7e8] font-semibold text-[#5d9f35]' : 'text-slate-700 hover:bg-slate-50'}`}
+                className={({ isActive }) => `brand-link-hover rounded-xl px-4 py-3 text-sm ${isActive ? 'bg-[#edf7e8] font-semibold text-[#5d9f35]' : 'text-slate-700'}`}
               >
                 {link.label}
               </NavLink>
             ))}
             <div className="mt-2 grid gap-2 border-t border-slate-200 pt-3 sm:grid-cols-2">
               <LanguageSwitcher />
-              <a href="/clients" onClick={() => setMobileOpen(false)} className="rounded-full bg-[#73b744] px-5 py-3 text-center text-sm font-semibold text-white">{t('forClients')}</a>
-              <a href="/students" onClick={() => setMobileOpen(false)} className="rounded-full border border-slate-200 px-5 py-3 text-center text-sm font-semibold text-slate-700">{t('joinStudent')}</a>
+              <a href="/clients" onClick={() => setMobileOpen(false)} className="brand-hover rounded-full bg-[#73b744] px-5 py-3 text-center text-sm font-semibold text-white">{t('forClients')}</a>
+              <a href="/students" onClick={() => setMobileOpen(false)} className="brand-link-hover rounded-full border border-slate-200 px-5 py-3 text-center text-sm font-semibold text-slate-700">{t('joinStudent')}</a>
             </div>
           </div>
         </nav>

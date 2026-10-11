@@ -21,7 +21,7 @@ function VisionContent() {
           </p>
           <a
             href="/our-branch"
-            className="mt-8 inline-flex rounded-full bg-emerald-600 px-6 py-3.5 text-sm font-semibold text-white transition hover:bg-emerald-700"
+            className="brand-hover mt-8 inline-flex rounded-full bg-emerald-600 px-6 py-3.5 text-sm font-semibold text-white"
           >
             {t('meetBranch')}
           </a>

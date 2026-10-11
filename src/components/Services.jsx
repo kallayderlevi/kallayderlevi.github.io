@@ -40,7 +40,7 @@ export default function Services() {
         {routes.map((route) => (
           <article
             key={route.title}
-            className="group rounded-[2rem] border border-slate-200 bg-white p-8 shadow-glow transition duration-300 hover:-translate-y-1 hover:border-slate-300 sm:p-10"
+            className="brand-card-hover group rounded-[2rem] border border-slate-200 bg-white p-8 shadow-glow sm:p-10"
           >
             <div className="flex items-center justify-between">
               <p className="text-xs font-semibold uppercase section-kicker text-slate-500">{route.title}</p>

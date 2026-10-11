@@ -18,6 +18,42 @@ html {
   outline-offset: 3px;
 }
 
+.brand-hover {
+  transition: background-color 180ms ease, border-color 180ms ease, box-shadow 180ms ease, color 180ms ease, transform 180ms ease;
+}
+
+.brand-hover:hover {
+  background-color: var(--brand-green-dark) !important;
+  border-color: var(--brand-green-dark) !important;
+  box-shadow: 0 8px 20px rgba(93, 159, 53, 0.2);
+  transform: translateY(-1px);
+}
+
+.brand-link-hover {
+  transition: background-color 180ms ease, color 180ms ease, transform 180ms ease;
+}
+
+.brand-link-hover:hover {
+  background-color: var(--brand-green-soft);
+  color: var(--brand-green-dark) !important;
+}
+
+.brand-card-hover {
+  transition: border-color 180ms ease, box-shadow 180ms ease, transform 180ms ease;
+}
+
+.brand-card-hover:hover {
+  border-color: color-mix(in srgb, var(--brand-green) 55%, white) !important;
+  box-shadow: 0 18px 50px rgba(93, 159, 53, 0.12);
+  transform: translateY(-3px);
+}
+
+input:not([type='checkbox']):not([type='file']):hover,
+textarea:hover,
+select:hover {
+  border-color: color-mix(in srgb, var(--brand-green) 55%, white);
+}
+
 body {
   min-height: 100vh;
   margin: 0;
