@@ -17,6 +17,7 @@ import StudentsPage from './pages/StudentsPage'
 import BranchAdminPage from './pages/BranchAdminPage'
 import BlogPage from './pages/BlogPage'
 import { TranslationLayer } from './components/TranslatedText'
+import PrivacyPolicyPage from './pages/PrivacyPolicyPage'
 
 function ScrollToTop() {
   const { pathname } = useLocation()
@@ -61,6 +62,7 @@ export default function App() {
             <Route path="/contact" element={<ContactPage />} />
             <Route path="/branch-admin" element={<BranchAdminPage />} />
             <Route path="/blog" element={<BlogPage />} />
+            <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
             <Route path="*" element={<Navigate to="/" replace />} />
           </Routes>
         </main>

@@ -10,6 +10,7 @@ const footerLinks = [
   { label: 'Students', href: '/students' },
   { label: 'Blog', href: '/blog' },
   { label: 'Contact', href: '/contact' },
+  { label: 'Privacy Policy', href: '/privacy-policy' },
 ]
 
 export default function Footer() {

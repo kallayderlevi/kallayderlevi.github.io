@@ -1,3 +1,5 @@
+import ApplicationConsent from './ApplicationConsent'
+
 export default function Contact() {
   return (
     <section id="contact" className="mx-auto max-w-7xl px-6 py-20 lg:px-8 lg:py-24">
@@ -83,6 +85,8 @@ export default function Contact() {
               className="rounded-2xl border border-slate-200 bg-white px-4 py-3 text-slate-900 placeholder:text-slate-400 outline-none transition focus:border-emerald-500"
             />
           </label>
+
+          <ApplicationConsent />
 
           <button
             type="submit"

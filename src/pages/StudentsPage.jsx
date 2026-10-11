@@ -1,4 +1,5 @@
 import PageBanner from '../components/PageBanner'
+import ApplicationConsent from '../components/ApplicationConsent'
 import { useLanguage } from '../i18n'
 
 const timeline = [
@@ -142,6 +143,7 @@ export default function StudentsPage() {
             <label className="grid gap-2 text-sm text-slate-700">CV upload<input name="cv" type="file" accept=".pdf,.doc,.docx" className="rounded-2xl border border-slate-200 bg-white px-4 py-3 text-sm file:mr-4 file:rounded-full file:border-0 file:bg-[#edf7e8] file:px-4 file:py-2 file:font-semibold file:text-[#73b744]" /></label>
           </div>
           <label className="mt-4 grid gap-2 text-sm text-slate-700">Motivation<textarea name="message" rows="5" className="rounded-2xl border border-slate-200 bg-white px-4 py-3 outline-none" /></label>
+          <ApplicationConsent />
           <button className="mt-6 inline-flex rounded-full bg-[#73b744] px-6 py-3.5 text-sm font-semibold text-white transition hover:bg-[#5d9f35]">Submit Application</button>
         </form>
       </div>
