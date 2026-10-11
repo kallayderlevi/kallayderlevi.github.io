@@ -16,7 +16,7 @@ export default function ApplicationDeadline({ showApply = true }) {
   }
 
   return (
-    <div className="mt-3 rounded-2xl border border-[#73b744]/25 bg-[#edf7e8] p-4 text-[#5d9f35]" role="status">
+    <div className="mt-3 rounded-2xl border border-[#73b744]/25 bg-[#edf7e8] p-4 text-[#5d9f35] shadow-sm" role="status">
       <p className="text-xs font-semibold uppercase tracking-[0.18em]">{t('deadlineOpen')}</p>
       <div className="mt-3 grid grid-cols-2 gap-2 font-mono tabular-nums sm:flex sm:flex-wrap sm:items-end sm:gap-x-4 sm:gap-y-2">
         <span className="rounded-xl bg-white/70 px-2 py-1 text-2xl font-bold tracking-tight sm:bg-transparent sm:px-0 sm:py-0 sm:text-4xl">{String(status.days).padStart(2, '0')}<small className="ml-1 text-[0.6rem] font-semibold uppercase tracking-normal sm:text-xs">{t('deadlineDays')}</small></span>

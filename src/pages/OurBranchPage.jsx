@@ -46,9 +46,9 @@ export default function OurBranchPage() {
         {board.map((member) => (
           <article
             key={member.role}
-            className="group overflow-hidden rounded-[1.75rem] border border-slate-200 bg-white shadow-glow transition duration-300 hover:-translate-y-1 hover:border-slate-300"
+            className="brand-card-hover group overflow-hidden rounded-[1.75rem] border border-slate-200 bg-white shadow-glow"
           >
-            <div className="flex h-48 items-center justify-center bg-slate-950">
+            <div className="flex aspect-[4/3] items-center justify-center bg-slate-950 sm:aspect-[5/4]">
               <img
                 src={member.image || '/brand/globe-green.png'}
                 alt={member.image ? member.name : ''}
@@ -56,7 +56,7 @@ export default function OurBranchPage() {
               />
             </div>
             <div className="p-5">
-              <p className="text-xs font-semibold uppercase section-kicker text-emerald-700">{member.role}</p>
+              <p className="text-xs font-semibold uppercase section-kicker text-[#5d9f35]">{member.role}</p>
               <h3 className="mt-3 text-lg font-semibold text-slate-900">{member.name}</h3>
               <p className="mt-2 text-sm leading-6 text-slate-600">{member.background}</p>
               <a href={`mailto:${member.email}`} className="mt-4 block text-sm font-medium text-slate-500 hover:text-emerald-700">
@@ -100,8 +100,8 @@ export default function OurBranchPage() {
           <h2 className="mt-3 text-3xl font-semibold tracking-tight text-slate-900">{t('communityHeading')}</h2>
           <div className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
             {consultants.map((member) => (
-              <article key={member.id} className="overflow-hidden rounded-[1.75rem] border border-slate-200 bg-white shadow-glow">
-                <div className="flex h-40 items-center justify-center bg-slate-950">
+              <article key={member.id} className="brand-card-hover overflow-hidden rounded-[1.75rem] border border-slate-200 bg-white shadow-glow">
+                <div className="flex aspect-[4/3] items-center justify-center bg-slate-950">
                   <img src={member.image || '/brand/globe-green.png'} alt={member.image ? member.name : ''} className={photoClass(member, member.image ? 'h-full w-full' : 'h-20 w-20 object-contain')} />
                 </div>
                 <div className="p-5">
