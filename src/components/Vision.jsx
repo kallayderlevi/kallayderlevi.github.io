@@ -31,6 +31,7 @@ function VisionContent() {
           <div className="relative aspect-video overflow-hidden rounded-[1.4rem] bg-black">
             <iframe
               className="h-full w-full"
+              loading="lazy"
               src="https://www.youtube.com/embed/zkgZ5LiRiZA"
               title="180 Degrees Consulting vision"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"

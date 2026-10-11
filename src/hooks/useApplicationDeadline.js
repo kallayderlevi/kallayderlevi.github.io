@@ -5,7 +5,7 @@ import { useBranchContent } from './useBranchContent'
 function getStatus(recruitment) {
   const configuredDeadline = recruitment?.deadline ? new Date(`${recruitment.deadline}T23:59:59+02:00`) : applicationDeadline
   const remaining = configuredDeadline.getTime() - Date.now()
-  if (recruitment?.open === false || remaining <= 0) return { open: false, days: 0, hours: 0, minutes: 0, seconds: 0 }
+  if (recruitment?.open === false || remaining <= 0) return { open: false, days: 0, hours: 0, minutes: 0, seconds: 0, nextOpenDate: recruitment?.nextOpenDate, nextDeadline: recruitment?.nextDeadline }
   const totalSeconds = Math.floor(remaining / 1000)
   return {
     open: true,

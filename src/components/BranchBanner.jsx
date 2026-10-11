@@ -4,7 +4,7 @@ export default function BranchBanner() {
   const { t } = useLanguage()
   return (
     <section className="relative isolate overflow-hidden bg-[#73b744] text-white">
-      <img src="/brand/budapest-banner.jpeg" alt="Budapest skyline with 180 Degrees Consulting branding" className="relative block aspect-[3/1] w-full object-contain object-center sm:absolute sm:inset-0 sm:aspect-auto sm:h-full sm:object-cover" />
+      <img src="/brand/budapest-banner.jpeg" alt="Budapest skyline with 180 Degrees Consulting branding" loading="lazy" className="relative block aspect-[3/1] w-full object-contain object-center sm:absolute sm:inset-0 sm:aspect-auto sm:h-full sm:object-cover" />
       <div className="absolute inset-x-0 top-0 h-[9rem] bg-gradient-to-b from-slate-950/25 to-transparent sm:inset-0 sm:h-auto sm:bg-gradient-to-r sm:from-[#5d9f35]/85 sm:via-[#73b744]/35 sm:to-transparent" />
       <div className="absolute inset-0 hidden bg-gradient-to-r from-slate-950/35 via-transparent to-transparent sm:block" />
       <div className="absolute inset-0 hidden bg-white/10 mix-blend-soft-light sm:block banner-sweep" />

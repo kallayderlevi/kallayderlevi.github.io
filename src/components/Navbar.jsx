@@ -72,6 +72,10 @@ export default function Navbar() {
       {mobileOpen && (
         <nav id="mobile-navigation" className="max-h-[calc(100vh-4.5rem)] overflow-y-auto border-t border-slate-200 bg-white px-4 py-4 lg:hidden">
           <div className="mx-auto grid max-w-7xl gap-1">
+            <div className="mb-2 grid gap-2 border-b border-slate-200 pb-3 sm:grid-cols-2">
+              <a href="/students" onClick={() => setMobileOpen(false)} className="brand-hover rounded-full bg-[#73b744] px-5 py-3 text-center text-sm font-semibold text-white">{t('joinStudent')}</a>
+              <a href="/clients" onClick={() => setMobileOpen(false)} className="brand-link-hover rounded-full border border-slate-200 px-5 py-3 text-center text-sm font-semibold text-slate-700">{t('forClients')}</a>
+            </div>
             {translatedLinks.map((link) => (
               <NavLink
                 key={link.label}
@@ -84,8 +88,6 @@ export default function Navbar() {
             ))}
             <div className="mt-2 grid gap-2 border-t border-slate-200 pt-3 sm:grid-cols-2">
               <div className="sm:col-span-2"><LanguageSwitcher /></div>
-              <a href="/clients" onClick={() => setMobileOpen(false)} className="brand-hover rounded-full bg-[#73b744] px-5 py-3 text-center text-sm font-semibold text-white">{t('forClients')}</a>
-              <a href="/students" onClick={() => setMobileOpen(false)} className="brand-link-hover rounded-full border border-slate-200 px-5 py-3 text-center text-sm font-semibold text-slate-700">{t('joinStudent')}</a>
             </div>
           </div>
         </nav>

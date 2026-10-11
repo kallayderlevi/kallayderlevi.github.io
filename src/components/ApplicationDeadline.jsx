@@ -10,6 +10,7 @@ export default function ApplicationDeadline({ showApply = true }) {
     return (
       <div className="mt-3 rounded-2xl bg-slate-200 px-4 py-3 text-slate-600">
         <p className="text-sm font-semibold">{t('deadlineClosed')}</p>
+        {status.nextOpenDate && <p className="mt-2 text-xs leading-5">{t('nextRecruitment')}: {t('deadlineOpenDate')} {status.nextOpenDate}, {t('deadlineDeadline')} {status.nextDeadline}.</p>}
         {showApply && <Link to="/students" className="brand-link-hover mt-2 inline-flex rounded-md px-1 py-0.5 text-sm font-semibold text-[#5d9f35]">{t('applyNow')}</Link>}
       </div>
     )

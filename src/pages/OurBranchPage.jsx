@@ -1,10 +1,12 @@
 import { useBranchContent } from '../hooks/useBranchContent'
 import { useLanguage } from '../i18n'
+import { useState } from 'react'
 import EmailLink from '../components/EmailLink'
 
 export default function OurBranchPage() {
   const { board, consultants } = useBranchContent()
   const { t } = useLanguage()
+  const [selectedMember, setSelectedMember] = useState(null)
   const photoClass = (member, fallback) => member.image
     ? `${member.imageFit === 'contain' ? 'object-contain bg-slate-100' : 'object-cover'} ${member.imagePosition === 'top' ? 'object-top' : member.imagePosition === 'bottom' ? 'object-bottom' : 'object-center'} ${fallback}`
     : fallback
@@ -51,12 +53,13 @@ export default function OurBranchPage() {
               <img
                 src={member.image || '/brand/globe-green.png'}
                 alt={member.image ? member.name : ''}
+                loading="lazy"
                 className={photoClass(member, member.image ? 'h-full w-full' : 'h-24 w-24 object-contain opacity-90 transition duration-300 group-hover:scale-105')}
               />
             </div>
             <div className="p-5">
               <p className="text-xs font-semibold uppercase section-kicker text-[#5d9f35]">{member.role}</p>
-              <h3 className="mt-3 text-lg font-semibold text-slate-900">{member.name}</h3>
+              <button type="button" onClick={() => setSelectedMember(member)} className="mt-3 text-left text-lg font-semibold text-slate-900 hover:text-[#5d9f35]">{member.name}</button>
               <p className="mt-2 text-sm leading-6 text-slate-600">{member.background}</p>
               <div className="mt-4 flex flex-wrap items-center gap-3">
                 <span className="text-sm font-medium text-slate-500">{member.email}</span>
@@ -102,17 +105,29 @@ export default function OurBranchPage() {
             {consultants.map((member) => (
               <article key={member.id} className="brand-card-hover overflow-hidden rounded-[1.75rem] border border-slate-200 bg-white shadow-glow">
                 <div className="flex aspect-[4/3] items-center justify-center bg-slate-950">
-                  <img src={member.image || '/brand/globe-green.png'} alt={member.image ? member.name : ''} className={photoClass(member, member.image ? 'h-full w-full' : 'h-20 w-20 object-contain')} />
+                  <img src={member.image || '/brand/globe-green.png'} alt={member.image ? member.name : ''} loading="lazy" className={photoClass(member, member.image ? 'h-full w-full' : 'h-20 w-20 object-contain')} />
                 </div>
                 <div className="p-5">
                   <p className="text-xs font-semibold uppercase section-kicker text-emerald-700">{member.role}</p>
-                  <h3 className="mt-3 text-lg font-semibold text-slate-900">{member.name}</h3>
+                  <button type="button" onClick={() => setSelectedMember(member)} className="mt-3 text-left text-lg font-semibold text-slate-900 hover:text-[#5d9f35]">{member.name}</button>
                   <p className="mt-2 text-sm leading-6 text-slate-600">{member.background}</p>
                   <div className="mt-4 flex flex-wrap items-center gap-3"><span className="text-sm text-slate-500">{member.email}</span><EmailLink email={member.email} /></div>
                   {member.showLinkedin && member.linkedin && <a href={member.linkedin} target="_blank" rel="noreferrer" aria-label={`${member.name} on LinkedIn`} title="LinkedIn" className="brand-hover mt-3 inline-flex rounded-full bg-[#73b744] px-3 py-1.5 text-xs font-bold text-white">LinkedIn</a>}
                 </div>
               </article>
             ))}
+          </div>
+        </div>
+      )}
+      {selectedMember && (
+        <div className="fixed inset-0 z-[60] flex items-center justify-center bg-slate-950/50 p-4" role="presentation" onClick={() => setSelectedMember(null)}>
+          <div role="dialog" aria-modal="true" aria-label={selectedMember.name} className="w-full max-w-lg rounded-[2rem] bg-white p-7 shadow-2xl" onClick={(event) => event.stopPropagation()}>
+            <div className="flex items-start justify-between gap-5">
+              <div><p className="text-xs font-semibold uppercase section-kicker text-[#5d9f35]">{selectedMember.role}</p><h2 className="mt-2 text-2xl font-semibold text-slate-900">{selectedMember.name}</h2></div>
+              <button type="button" onClick={() => setSelectedMember(null)} aria-label="Close" className="brand-link-hover rounded-full px-3 py-1 text-2xl text-slate-500">&times;</button>
+            </div>
+            <p className="mt-5 text-base leading-7 text-slate-600">{selectedMember.background}</p>
+            <div className="mt-6 flex flex-wrap gap-3"><EmailLink email={selectedMember.email} />{selectedMember.showLinkedin && selectedMember.linkedin && <a href={selectedMember.linkedin} target="_blank" rel="noreferrer" className="brand-hover rounded-full bg-[#73b744] px-3 py-1.5 text-xs font-bold text-white">LinkedIn</a>}</div>
           </div>
         </div>
       )}

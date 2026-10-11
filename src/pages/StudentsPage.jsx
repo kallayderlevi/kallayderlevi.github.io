@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 import { useEffect, useRef, useState } from 'react'
+import { submitApplicationForm } from '../lib/formSubmission'
 import PageBanner from '../components/PageBanner'
 import ApplicationConsent from '../components/ApplicationConsent'
 import ApplicationDeadline from '../components/ApplicationDeadline'
@@ -45,6 +46,9 @@ export default function StudentsPage() {
   const { open: applicationsOpen } = useApplicationDeadline()
   const applicationFormRef = useRef(null)
   const [mobileApplyVisibility, setMobileApplyVisibility] = useState(1)
+  const [applicationStatus, setApplicationStatus] = useState('idle')
+  const [isDraggingFile, setIsDraggingFile] = useState(false)
+  const cvInputRef = useRef(null)
 
   useEffect(() => {
     const updateVisibility = () => {
@@ -69,6 +73,31 @@ export default function StudentsPage() {
   const scrollToApplication = (event) => {
     event.preventDefault()
     applicationFormRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+  }
+
+  const submitApplication = async (event) => {
+    try {
+      const result = await submitApplicationForm(event.currentTarget)
+      if (!result.handled) return
+      event.preventDefault()
+      setApplicationStatus('success')
+      event.currentTarget.reset()
+    } catch (error) {
+      event.preventDefault()
+      setApplicationStatus(error.message)
+    }
+  }
+
+  const setCvFile = (file) => {
+    if (!file || !cvInputRef.current) return
+    if (file.size > 10 * 1024 * 1024) {
+      setApplicationStatus('Please upload a PDF, DOC, or DOCX file up to 10 MB.')
+      return
+    }
+    const transfer = new DataTransfer()
+    transfer.items.add(file)
+    cvInputRef.current.files = transfer.files
+    setApplicationStatus('idle')
   }
 
   return (
@@ -146,6 +175,7 @@ export default function StudentsPage() {
           id="student-application"
           style={{ scrollMarginTop: '6rem' }}
           ref={applicationFormRef}
+          onSubmit={submitApplication}
           className="min-w-0 rounded-[2rem] border border-slate-200 bg-slate-50 p-6 shadow-glow sm:p-10"
           action="https://formsubmit.co/budapest@180dc.org"
           method="POST"
@@ -162,6 +192,8 @@ export default function StudentsPage() {
             {t('applicationCopy')}
           </p>
           <ApplicationDeadline showApply={false} />
+          {applicationStatus === 'success' && <p className="mt-4 rounded-xl border border-green-200 bg-green-50 px-3 py-2 text-sm font-semibold text-green-800" role="status">Application received. We will contact you by email.</p>}
+          {applicationStatus !== 'idle' && applicationStatus !== 'success' && <p className="mt-4 rounded-xl border border-red-200 bg-red-50 px-3 py-2 text-sm font-semibold text-red-700" role="alert">{applicationStatus}</p>}
 
           <fieldset disabled={!applicationsOpen} className="contents">
           <div className="mt-6 grid gap-4 sm:grid-cols-2">
@@ -170,7 +202,7 @@ export default function StudentsPage() {
           </div>
           <div className="mt-4 grid gap-4 sm:grid-cols-2">
             <label className="grid gap-2 text-sm text-slate-700">{t('universityLabel')}<input name="university" required autoComplete="organization" className="rounded-2xl border border-slate-200 bg-white px-4 py-3 outline-none" /></label>
-            <label className="grid gap-2 rounded-2xl border border-dashed border-[#73b744]/50 bg-[#edf7e8] p-3 text-sm text-slate-700">{t('cvUpload')}<input name="cv" type="file" accept=".pdf,.doc,.docx" required className="mt-1 rounded-xl border border-white bg-white px-3 py-3 text-sm file:mr-3 file:rounded-full file:border-0 file:bg-[#73b744] file:px-3 file:py-2 file:font-semibold file:text-white" /></label>
+              <label className={`grid gap-2 rounded-2xl border border-dashed p-3 text-sm text-slate-700 transition ${isDraggingFile ? 'border-[#5d9f35] bg-[#dff0d4]' : 'border-[#73b744]/50 bg-[#edf7e8]'}`} onDragOver={(event) => { event.preventDefault(); setIsDraggingFile(true) }} onDragLeave={() => setIsDraggingFile(false)} onDrop={(event) => { event.preventDefault(); setIsDraggingFile(false); setCvFile(event.dataTransfer.files[0]) }}>{t('cvUpload')}<span className="text-xs text-slate-500">PDF, DOC, DOCX · max. 10 MB</span><input ref={cvInputRef} name="cv" type="file" accept=".pdf,.doc,.docx" required onChange={(event) => setCvFile(event.target.files[0])} className="mt-1 rounded-xl border border-white bg-white px-3 py-3 text-sm file:mr-3 file:rounded-full file:border-0 file:bg-[#73b744] file:px-3 file:py-2 file:font-semibold file:text-white" /></label>
           </div>
           <label className="mt-4 grid gap-2 text-sm text-slate-700">{t('motivationLabel')}<textarea name="message" rows="5" required className="rounded-2xl border border-slate-200 bg-white px-4 py-3 outline-none" /></label>
           <ApplicationConsent />
