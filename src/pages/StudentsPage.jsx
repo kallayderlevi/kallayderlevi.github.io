@@ -181,14 +181,14 @@ export default function StudentsPage() {
       {applicationsOpen && (
         <div
           aria-hidden={mobileApplyVisibility < 0.05}
-          className="fixed inset-x-4 bottom-4 z-40 transition-[opacity,transform] duration-150 md:hidden"
+          className="fixed inset-x-0 bottom-0 z-40 border-t border-[#73b744]/20 bg-white/90 px-4 pt-2 backdrop-blur-md transition-[opacity,transform] duration-150 md:hidden"
           style={{
             opacity: mobileApplyVisibility,
-            transform: `translateY(${(1 - mobileApplyVisibility) * 120}px)`,
+            transform: `translateY(${(1 - mobileApplyVisibility) * 100}%)`,
             pointerEvents: mobileApplyVisibility < 0.05 ? 'none' : 'auto',
           }}
         >
-          <Link to="#student-application" onClick={scrollToApplication} className="brand-hover flex w-full items-center justify-center rounded-full bg-[#73b744] px-6 py-3.5 text-sm font-semibold text-white shadow-[0_10px_30px_rgba(93,159,53,0.3)]">
+          <Link to="#student-application" onClick={scrollToApplication} className="brand-hover mx-auto flex w-full max-w-7xl items-center justify-center rounded-full bg-[#73b744] px-6 py-3.5 text-sm font-semibold text-white shadow-[0_10px_30px_rgba(93,159,53,0.3)]">
             {t('mobileApply')}
           </Link>
         </div>
