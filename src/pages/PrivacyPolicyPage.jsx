@@ -47,10 +47,20 @@ function HungarianPolicy() {
       </Section>
       <Section title="A szabályzat célja">
         <p>A szabályzat bemutatja, hogy az 180 Degrees Consulting Budapest Egyesület hogyan kezeli a nyilvántartásokat, hogyan gyűjt és dolgoz fel adatokat, valamint hogyan kezeli a személyes adatokat az alkalmazandó magyar és európai uniós jogszabályoknak, különösen a GDPR-nak megfelelően.</p>
+        <p>Az 180 Degrees Consulting Budapest Egyesület az adatkezelés során fokozott gondossággal jár el az adatvédelmi incidensek megelőzése érdekében.</p>
       </Section>
-      <Section title="Sütik és jogalap">
-        <p>Weboldalunk adatvédelmi és sütikkel kapcsolatos tájékoztatást nyújt. A sütik a böngésző beállításaiban letilthatók vagy törölhetők. A hozzájárulást igénylő sütik használata előtt tájékoztatjuk a látogatókat és hozzájárulást kérünk.</p>
+      <Section title="Általános rendelkezések és sütik">
+        <p>A szabályzat alkalmazza az Európai Parlament és a Tanács (EU) 2016/679 rendeletét (GDPR), amely a természetes személyek személyes adatok kezelése tekintetében történő védelméről és az ilyen adatok szabad áramlásáról szól.</p>
+        <p>Weboldalunk, a 180dcbudapest.org, adatvédelmi és sütikkel kapcsolatos tájékoztatást nyújt. A legtöbb böngésző alapértelmezés szerint elfogadja a sütiket, azonban ezek a böngésző beállításaiban elutasíthatók, letilthatók vagy törölhetők.</p>
+        <p>Amennyiben a sütik használatához hozzájárulás szükséges, és az adatkezelés a weboldal meglátogatásakor megkezdődik, az első látogatáskor tájékoztatjuk a felhasználót és hozzájárulást kérünk. Nem használunk és nem engedélyezünk olyan sütiket, amelyek harmadik felek számára a felhasználó hozzájárulása nélkül teszik lehetővé adatok gyűjtését.</p>
+        <p>A sütik elfogadása nem kötelező, azonban letiltásuk esetén nem garantáljuk, hogy a weboldal minden funkciója elvárható módon működik.</p>
+      </Section>
+      <Section title="Jogi alap">
         <p>Adatkezelésünk jogalapját többek között az (EU) 2016/679 rendelet (GDPR), Magyarország Alaptörvénye, a Polgári Törvénykönyvről szóló 2013. évi V. törvény és az információs önrendelkezési jogról és az információszabadságról szóló 2011. évi CXII. törvény képezi.</p>
+      </Section>
+      <Section title="A szabályzat hatálya">
+        <p>A szabályzat az egész szervezetre, valamennyi szervezeti egységre, az operatív csapat minden tagjára, valamint minden olyan személyre vagy szervezetre kötelező, amely az 180 Degrees Consulting Budapest Egyesülettel fennálló szerződéses vagy egyéb jogviszony alapján személyes adatokat kezel.</p>
+        <p>A szabályzat kiterjed az adatkezelő által igénybe vett adatfeldolgozók felé irányuló adatáramlásokra, továbbá az adatkezelő szervezeti egységei által kezelt valamennyi személyes adatra és adatkezelési műveletre.</p>
       </Section>
       <Section title="Milyen adatokat gyűjtünk?">
         <ul className="list-disc space-y-2 pl-6">
@@ -61,12 +71,44 @@ function HungarianPolicy() {
         <ul className="list-disc space-y-2 pl-6"><li>Állás- és tagsági jelentkezések értékelésére, valamint a kiválasztási folyamat lebonyolítására.</li><li>Hírlevelek, frissítések és tájékoztató e-mailek küldésére.</li><li>A jelentkezés állapotával kapcsolatos időszakos tájékoztatásra.</li></ul>
       </Section>
       <Section title="Meddig őrizzük meg az adatokat?"><p>Az adatokat csak addig őrizzük meg, ameddig az adatkezelési célok teljesítéséhez, illetve jogi vagy hatósági kötelezettségeinkhez szükséges. Sikertelen jelentkezés esetén az önéletrajzot és a jelentkezési adatokat a kiválasztási folyamat lezárását követő 30–60 napon belül biztonságosan töröljük vagy megsemmisítjük.</p></Section>
-      <Section title="Az érintettek jogai">
-        <p>Az érintett jogosult tájékoztatást, hozzáférést, helyesbítést, törlést, az adatkezelés korlátozását és adathordozhatóságot kérni, továbbá jogosult tiltakozni a jogos érdeken vagy közérdeken alapuló adatkezelés ellen.</p>
+      <Section title="Értelmező rendelkezések">
+        <p><strong>Személyes adat:</strong> azonosított vagy azonosítható természetes személyre vonatkozó bármely információ.</p>
+        <p><strong>Adatkezelés:</strong> a személyes adatokon vagy adatállományokon végzett bármely művelet, így különösen a gyűjtés, rögzítés, rendszerezés, tárolás, lekérdezés, felhasználás, továbbítás, korlátozás, törlés vagy megsemmisítés.</p>
+        <p><strong>Álnevesítés:</strong> olyan adatkezelés, amelynek eredményeként a személyes adat további, elkülönítetten tárolt információ nélkül nem kapcsolható egy konkrét érintetthez.</p>
+        <p><strong>Nyilvántartási rendszer:</strong> strukturált személyesadat-állomány, amely meghatározott szempontok szerint hozzáférhető.</p>
+        <p><strong>Adatkezelő:</strong> az a természetes vagy jogi személy, illetve szerv, amely az adatkezelés céljait és eszközeit meghatározza.</p>
+        <p><strong>Adatfeldolgozó:</strong> az a személy vagy szervezet, amely az adatkezelő nevében személyes adatokat kezel.</p>
+        <p><strong>Címzett:</strong> az a személy vagy szervezet, akivel a személyes adatot közlik.</p>
+        <p><strong>Harmadik fél:</strong> az érintetten, az adatkezelőn és az adatfeldolgozón kívüli személy vagy szervezet.</p>
+        <p><strong>Az érintett hozzájárulása:</strong> az érintett önkéntes, konkrét, tájékoztatáson alapuló és egyértelmű akaratnyilatkozata, amellyel hozzájárul a rá vonatkozó személyes adatok kezeléséhez.</p>
+        <p><strong>Adatvédelmi incidens:</strong> a biztonság olyan sérülése, amely a személyes adatok véletlen vagy jogellenes megsemmisüléséhez, elvesztéséhez, megváltoztatásához, jogosulatlan közléséhez vagy az azokhoz való jogosulatlan hozzáféréshez vezet.</p>
+        <p><strong>Adattovábbítás:</strong> az adatok hozzáférhetővé tétele meghatározott harmadik fél számára.</p>
+        <p><strong>Adattörlés:</strong> az adatok olyan módon történő felismerhetetlenné tétele, hogy helyreállításuk többé ne legyen lehetséges.</p>
+        <p><strong>Az adatkezelés korlátozása:</strong> a tárolt személyes adatok megjelölése jövőbeli kezelésük korlátozása céljából.</p>
+        <p>Tevékenysége során az 180 Degrees Consulting Budapest Egyesület tagok, munkavállalók, megbízottak, szerződéses partnerek, valamint ügyfelek, partnerek, együttműködő oktatási intézmények és közintézmények képviseletében eljáró természetes személyek személyes adatait kezeli.</p>
+        <p>Az 180 Degrees Consulting Budapest Egyesület valamennyi adatkezelési tevékenységét az (EU) 2016/679 rendeletben meghatározott általános elveknek megfelelően végzi.</p>
       </Section>
-      <Section title="Jogorvoslat és kapcsolat">
-        <p>Jogainak megsértése esetén a Fővárosi Törvényszékhez fordulhat, vagy vizsgálatot kezdeményezhet a Nemzeti Adatvédelmi és Információszabadság Hatóságnál (NAIH), 1125 Budapest, Szilágyi Erzsébet fasor 22/C, ugyfelszolgalat@naih.hu.</p>
-        <p>Kérdéseivel írjon a budapest@180dc.org címre, vagy postai úton a 1022 Budapest, Bimbó út 48-50. A ép. 3. ajtó címre.</p>
+      <Section title="Adatvédelmi elkötelezettség">
+        <p>Az 180 Degrees Consulting Budapest Egyesület elkötelezett az Ön magánszférájának védelme mellett. Ez az adatvédelmi szabályzat bemutatja, hogyan gyűjtjük, használjuk fel és közöljük személyes adatait a 180dcbudapest.org weboldallal és toborzási folyamatainkkal kapcsolatban.</p>
+        <p>A szabályzat weboldalunkra és annak kapcsolódó aldomainjeire is vonatkozik. Szolgáltatásunk elérésével vagy használatával Ön kijelenti, hogy elolvasta, megértette és elfogadja személyes adatai jelen szabályzat szerinti gyűjtését, tárolását, felhasználását és közlését.</p>
+      </Section>
+      <Section title="Az Ön jogai">
+        <dl className="space-y-5">
+          <div><dt className="font-semibold text-slate-900">Tájékoztatáshoz való jog</dt><dd>Az érintett jogosult az adatkezelés megkezdése előtt tömör, átlátható, érthető és könnyen hozzáférhető tájékoztatást kapni.</dd></div>
+          <div><dt className="font-semibold text-slate-900">Hozzáféréshez való jog</dt><dd>Az érintett jogosult megerősítést kapni arról, hogy személyes adatainak kezelése folyamatban van-e, és jogosult hozzáférni az adatokhoz, valamint a GDPR-ban meghatározott információkhoz.</dd></div>
+          <div><dt className="font-semibold text-slate-900">Helyesbítéshez való jog</dt><dd>Az érintett jogosult a pontatlan személyes adatok indokolatlan késedelem nélküli helyesbítését kérni.</dd></div>
+          <div><dt className="font-semibold text-slate-900">Törléshez való jog</dt><dd>Az érintett jogosult személyes adatainak indokolatlan késedelem nélküli törlését kérni, amennyiben a törvényben meghatározott feltételek fennállnak.</dd></div>
+          <div><dt className="font-semibold text-slate-900">Az adatkezelés korlátozásához való jog</dt><dd>Az érintett jogosult az adatkezelés korlátozását kérni, ha annak jogszabályi feltételei fennállnak.</dd></div>
+          <div><dt className="font-semibold text-slate-900">Adathordozhatósághoz való jog</dt><dd>Az érintett jogosult a rá vonatkozó, általa rendelkezésre bocsátott személyes adatokat tagolt, széles körben használt és géppel olvasható formátumban megkapni, valamint azokat másik adatkezelőnek továbbítani.</dd></div>
+          <div><dt className="font-semibold text-slate-900">Tiltakozáshoz való jog</dt><dd>Az érintett jogosult a saját helyzetével kapcsolatos okokból bármikor tiltakozni a jogos érdeken vagy közérdeken alapuló adatkezelés ellen.</dd></div>
+        </dl>
+      </Section>
+      <Section title="Jogorvoslat">
+        <p>Jogainak megsértése esetén a Fővárosi Törvényszékhez fordulhat (1055 Budapest, Markó u. 27.; <a className="text-[#5d9f35] underline" href="https://fovarositorvenyszek.birosag.hu">fovarositorvenyszek.birosag.hu</a>), vagy vizsgálatot kezdeményezhet a Nemzeti Adatvédelmi és Információszabadság Hatóságnál (NAIH), 1125 Budapest, Szilágyi Erzsébet fasor 22/C, ugyfelszolgalat@naih.hu.</p>
+      </Section>
+      <Section title="Kapcsolat">
+        <p>Az adatvédelmi szabályzattal vagy adatai kezelésével kapcsolatos kérdéseivel forduljon hozzánk:</p>
+        <ul className="list-disc space-y-2 pl-6"><li>E-mail: budapest@180dc.org</li><li>Cím: 1022 Budapest, Bimbó út 48-50. A ép. 3. ajtó, Magyarország</li><li>Telefonszám: 00 36 30 718 9227</li></ul>
       </Section>
     </>
   )
