@@ -1,5 +1,6 @@
 import BranchBanner from './components/BranchBanner'
 import Blog from './components/Blog'
+import ApplicationDeadline from './components/ApplicationDeadline'
 import Footer from './components/Footer'
 import Hero from './components/Hero'
 import Navbar from './components/Navbar'
@@ -49,6 +50,9 @@ export default function App() {
                   <BranchBanner />
                   <Hero />
                   <Vision />
+                  <div className="mx-auto max-w-7xl px-6 pb-12 lg:px-8 lg:pb-20">
+                    <ApplicationDeadline />
+                  </div>
                   <Services />
                   <Blog />
                 </HomePage>

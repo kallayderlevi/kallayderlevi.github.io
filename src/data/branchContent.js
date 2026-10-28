@@ -17,7 +17,7 @@ export const defaultPosts = [
   { id: 'ngo-consulting', category: 'Impact', title: 'What It’s Like Consulting for an NGO', copy: 'A short preview of the kinds of challenges our teams will tackle and the skills students will build along the way.', date: '2026-09-10' },
 ]
 
-export const defaultRecruitment = { open: true, deadline: '2026-10-31', nextOpenDate: '2027-01-15', nextDeadline: '2027-02-15' }
+export const defaultRecruitment = { open: true, deadline: '2026-12-31', nextOpenDate: '2027-01-15', nextDeadline: '2027-02-15' }
 
 const storageKey = '180dc-budapest-content'
 

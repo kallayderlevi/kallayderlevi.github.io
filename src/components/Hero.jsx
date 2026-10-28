@@ -1,5 +1,4 @@
 import { useLanguage } from '../i18n'
-import ApplicationDeadline from './ApplicationDeadline'
 
 export default function Hero() {
   const { t } = useLanguage()
@@ -21,10 +20,6 @@ export default function Hero() {
             <span className="h-2 w-2 rounded-full bg-emerald-600" />
             {t('heroNote')}
           </div>
-          <div className="mt-5 max-w-xl">
-            <ApplicationDeadline />
-          </div>
-
           <div className="mt-8 flex flex-col gap-4 sm:flex-row">
             <a
               href="/clients"
