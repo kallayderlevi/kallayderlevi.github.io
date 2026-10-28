@@ -24,7 +24,12 @@ const storageKey = '180dc-budapest-content'
 export function getContent() {
   try {
     const stored = localStorage.getItem(storageKey)
-    return stored ? { recruitment: defaultRecruitment, ...JSON.parse(stored) } : { board: defaultBoard, consultants: defaultConsultants, posts: defaultPosts, recruitment: defaultRecruitment }
+    if (!stored) return { board: defaultBoard, consultants: defaultConsultants, posts: defaultPosts, recruitment: defaultRecruitment }
+    const content = JSON.parse(stored)
+    const recruitment = content.recruitment?.deadline === '2026-10-31'
+      ? { ...content.recruitment, deadline: defaultRecruitment.deadline }
+      : content.recruitment || defaultRecruitment
+    return { ...content, recruitment }
   } catch {
     return { board: defaultBoard, consultants: defaultConsultants, posts: defaultPosts, recruitment: defaultRecruitment }
   }
