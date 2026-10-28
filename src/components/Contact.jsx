@@ -1,5 +1,6 @@
 import ApplicationConsent from './ApplicationConsent'
 import ApplicationDeadline from './ApplicationDeadline'
+import HowDidYouHear from './HowDidYouHear'
 import useApplicationDeadline from '../hooks/useApplicationDeadline'
 
 export default function Contact() {
@@ -83,6 +84,8 @@ export default function Contact() {
               </select>
             </label>
           </div>
+
+          <HowDidYouHear />
 
           <label className="mt-4 grid gap-2 text-sm text-slate-700">
             Message

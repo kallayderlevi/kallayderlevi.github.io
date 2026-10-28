@@ -1,4 +1,5 @@
 import PageBanner from '../components/PageBanner'
+import HowDidYouHear from '../components/HowDidYouHear'
 import { useLanguage } from '../i18n'
 import EmailLink from '../components/EmailLink'
 
@@ -111,6 +112,7 @@ export default function PartnersPage() {
             <label className="grid gap-2 text-sm text-slate-700">{t('organisationLabel')}<input name="organisation" required className="rounded-2xl border border-slate-200 bg-white px-4 py-3 outline-none" /></label>
           </div>
           <label className="mt-4 grid gap-2 text-sm text-slate-700">{t('emailLabel')}<input name="_replyto" type="email" required className="rounded-2xl border border-slate-200 bg-white px-4 py-3 outline-none" /></label>
+          <HowDidYouHear />
           <label className="mt-4 grid gap-2 text-sm text-slate-700">{t('messageLabel')}<textarea name="message" rows="6" required className="rounded-2xl border border-slate-200 bg-white px-4 py-3 outline-none" /></label>
           <button className="brand-hover mt-6 inline-flex rounded-full bg-[#73b744] px-6 py-3.5 text-sm font-semibold text-white">{t('sendPartnership')}</button>
         </form>

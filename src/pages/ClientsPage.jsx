@@ -1,4 +1,5 @@
 import PageBanner from '../components/PageBanner'
+import HowDidYouHear from '../components/HowDidYouHear'
 import { useLanguage } from '../i18n'
 
 const serviceGroups = [
@@ -133,6 +134,8 @@ export default function ClientsPage() {
             {t('emailLabel')}
             <input name="_replyto" type="email" required className="rounded-2xl border border-slate-200 bg-white px-4 py-3 outline-none" />
           </label>
+
+          <HowDidYouHear />
 
           <label className="mt-4 grid gap-2 text-sm text-slate-700">
             {t('messageLabel')}
