@@ -80,15 +80,11 @@ export default function StudentsPage() {
     event.preventDefault()
     const form = event.currentTarget
     try {
-      const result = await submitApplicationForm(form)
-      if (!result.handled) {
-        HTMLFormElement.prototype.submit.call(form)
-        return
-      }
+      await submitApplicationForm(form)
       setApplicationStatus('success')
       form.reset()
-    } catch {
-      HTMLFormElement.prototype.submit.call(form)
+    } catch (error) {
+      setApplicationStatus(error.message || 'The application could not be sent. Please try again.')
     }
   }
 
