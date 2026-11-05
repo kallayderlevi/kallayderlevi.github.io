@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { useEffect, useRef, useState } from 'react'
 import { submitApplicationForm } from '../lib/formSubmission'
 import PageBanner from '../components/PageBanner'
@@ -44,6 +44,7 @@ const benefits = [
 
 export default function StudentsPage() {
   const { t } = useLanguage()
+  const navigate = useNavigate()
   const { open: applicationsOpen } = useApplicationDeadline()
   const applicationFormRef = useRef(null)
   const [mobileApplyVisibility, setMobileApplyVisibility] = useState(1)
@@ -83,8 +84,8 @@ export default function StudentsPage() {
       await submitApplicationForm(form)
       setApplicationStatus('success')
       form.reset()
-    } catch (error) {
-      setApplicationStatus(error.message || 'The application could not be sent. Please try again.')
+    } catch {
+      navigate('/application-error')
     }
   }
 

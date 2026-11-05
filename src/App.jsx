@@ -19,6 +19,7 @@ import BlogPage from './pages/BlogPage'
 import { TranslationLayer } from './components/TranslatedText'
 import PrivacyPolicyPage from './pages/PrivacyPolicyPage'
 import ThankYouPage from './pages/ThankYouPage'
+import ApplicationErrorPage from './pages/ApplicationErrorPage'
 
 function ScrollToTop() {
   const { pathname } = useLocation()
@@ -67,6 +68,7 @@ export default function App() {
             <Route path="/blog" element={<BlogPage />} />
             <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
             <Route path="/thank-you" element={<ThankYouPage />} />
+            <Route path="/application-error" element={<ApplicationErrorPage />} />
             <Route path="*" element={<Navigate to="/" replace />} />
           </Routes>
         </main>
