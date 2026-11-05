@@ -159,7 +159,7 @@ export default function StudentsPage() {
       </div>
 
       <div className="mt-20 grid min-w-0 grid-cols-1 gap-8 lg:grid-cols-[0.9fr_1.1fr]">
-        <div className="min-w-0 rounded-[2rem] border border-slate-200 bg-white p-6 shadow-glow sm:p-10">
+        <div className="min-w-0 self-start rounded-[2rem] border border-slate-200 bg-white p-6 shadow-glow sm:p-10">
           <p className="text-xs font-semibold uppercase section-kicker text-slate-500">{t('selectionTitle')}</p>
           <h2 className="mt-4 text-2xl font-semibold text-slate-900">{t('selectionHeading')}</h2>
           <p className="mt-4 text-base leading-7 text-slate-600">
