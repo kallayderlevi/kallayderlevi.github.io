@@ -8,7 +8,9 @@ async function encodeFile(file) {
 }
 
 export async function submitApplicationForm(form) {
+  const appwriteEndpoint = import.meta.env.VITE_APPWRITE_ENDPOINT?.replace(/\/$/, '')
   const endpoint = import.meta.env.VITE_APPWRITE_FUNCTION_ENDPOINT
+    || (appwriteEndpoint ? `${appwriteEndpoint}/functions/6aed9ecd002c8b1bc746/executions` : '')
   if (!endpoint) throw new Error('The application service is not configured.')
 
   const formData = new FormData(form)
