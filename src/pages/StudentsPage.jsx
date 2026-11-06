@@ -121,7 +121,7 @@ export default function StudentsPage() {
             Complete your application through our secure Monday application form. You can upload your CV and provide your motivation there.
           </p>
           <ApplicationDeadline showApply={false} />
-          <a href={mondayFormUrl} className="brand-hover mt-6 inline-flex rounded-full bg-[#73b744] px-6 py-3.5 text-sm font-semibold text-white">{t('submitApplication')}</a>
+          <a href={mondayFormUrl} className="brand-hover mt-6 inline-flex rounded-full bg-[#73b744] px-6 py-3.5 text-sm font-semibold text-white">Fill out the application</a>
         </div>
       </div>
       {applicationsOpen && (
