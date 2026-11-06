@@ -11,7 +11,6 @@ const requiredVariables = [
   'MONDAY_COLUMN_YEARS_OF_STUDY',
   'MONDAY_COLUMN_DEGREE',
   'MONDAY_COLUMN_MOTIVATION',
-  'MONDAY_COLUMN_HEARD_ABOUT_US',
   'MONDAY_COLUMN_CV',
 ]
 
@@ -29,6 +28,10 @@ function emailValue(value) {
   return { email: String(value || ''), text: String(value || '') }
 }
 
+function dropdownValue(value) {
+  return { labels: value ? [String(value)] : [] }
+}
+
 async function mondayRequest(query, variables, token) {
   const response = await fetch(mondayEndpoint, {
     method: 'POST',
@@ -43,11 +46,11 @@ async function mondayRequest(query, variables, token) {
 async function createMondayItem(data, config) {
   const columnValues = {
     [config.MONDAY_COLUMN_EMAIL]: emailValue(data.email),
-    [config.MONDAY_COLUMN_YEARS_OF_STUDY]: textValue(data.yearsOfStudy),
-    [config.MONDAY_COLUMN_DEGREE]: textValue(data.degree),
+    [config.MONDAY_COLUMN_YEARS_OF_STUDY]: dropdownValue(data.yearsOfStudy),
+    [config.MONDAY_COLUMN_DEGREE]: dropdownValue(data.degree),
     [config.MONDAY_COLUMN_MOTIVATION]: textValue(data.motivation),
-    [config.MONDAY_COLUMN_HEARD_ABOUT_US]: textValue(data.heardAboutUs),
   }
+  if (config.MONDAY_COLUMN_HEARD_ABOUT_US) columnValues[config.MONDAY_COLUMN_HEARD_ABOUT_US] = textValue(data.heardAboutUs)
   const query = `mutation ($boardId: ID!, $groupId: String!, $itemName: String!, $columnValues: JSON!) {
     create_item(board_id: $boardId, group_id: $groupId, item_name: $itemName, column_values: $columnValues) { id }
   }`
