@@ -82,8 +82,8 @@ export default function StudentsPage() {
     const form = event.currentTarget
     try {
       await submitApplicationForm(form)
-      setApplicationStatus('success')
       form.reset()
+      navigate('/thank-you')
     } catch (error) {
       navigate('/application-error', { state: { message: error instanceof Error ? error.message : '' } })
     }

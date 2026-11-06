@@ -36,6 +36,16 @@ export async function submitApplicationForm(form) {
     body: JSON.stringify({ body: JSON.stringify(payload), async: false }),
   })
   const result = await response.json().catch(() => ({}))
-  if (!response.ok || result.status === 'failed') throw new Error(result.responseBody || 'The application could not be sent. Please try again.')
+  let functionBody = result.responseBody
+  if (typeof functionBody === 'string') {
+    try {
+      functionBody = JSON.parse(functionBody)
+    } catch {
+      functionBody = null
+    }
+  }
+  if (!response.ok || result.status === 'failed' || functionBody?.error) {
+    throw new Error(functionBody?.error || result.responseBody || 'The application could not be sent. Please try again.')
+  }
   return result
 }
