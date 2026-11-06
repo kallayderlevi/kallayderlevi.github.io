@@ -1,0 +1,11 @@
+{
+  "name": "180dc-recruitment-function",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "start": "node src/main.js"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

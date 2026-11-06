@@ -200,9 +200,11 @@ export default function StudentsPage() {
           <div className="mt-6 grid gap-4 sm:grid-cols-2">
             <label className="grid gap-2 text-sm text-slate-700">{t('nameLabel')}<input name="name" required autoComplete="name" className="rounded-2xl border border-slate-200 bg-white px-4 py-3 outline-none" /></label>
             <label className="grid gap-2 text-sm text-slate-700">Email<input name="email" type="email" required autoComplete="email" className="rounded-2xl border border-slate-200 bg-white px-4 py-3 outline-none" /></label>
+            <label className="grid gap-2 text-sm text-slate-700">Years of study<input name="years_of_study" type="number" min="1" max="10" className="rounded-2xl border border-slate-200 bg-white px-4 py-3 outline-none" /></label>
           </div>
           <div className="mt-4 grid gap-4 sm:grid-cols-2">
             <label className="grid gap-2 text-sm text-slate-700">{t('universityLabel')}<input name="university" required autoComplete="organization" className="rounded-2xl border border-slate-200 bg-white px-4 py-3 outline-none" /></label>
+            <label className="grid gap-2 text-sm text-slate-700">Degree<input name="degree" autoComplete="organization-title" className="rounded-2xl border border-slate-200 bg-white px-4 py-3 outline-none" /></label>
               <label className={`grid gap-2 rounded-2xl border border-dashed p-3 text-sm text-slate-700 transition ${isDraggingFile ? 'border-[#5d9f35] bg-[#dff0d4]' : 'border-[#73b744]/50 bg-[#edf7e8]'}`} onDragOver={(event) => { event.preventDefault(); setIsDraggingFile(true) }} onDragLeave={() => setIsDraggingFile(false)} onDrop={(event) => { event.preventDefault(); setIsDraggingFile(false); setCvFile(event.dataTransfer.files[0]) }}>{t('cvUpload')}<span className="text-xs text-slate-500">PDF, DOC, DOCX · max. 10 MB</span><input ref={cvInputRef} name="cv" type="file" accept=".pdf,.doc,.docx" required onChange={(event) => setCvFile(event.target.files[0])} className="mt-1 rounded-xl border border-white bg-white px-3 py-3 text-sm file:mr-3 file:rounded-full file:border-0 file:bg-[#73b744] file:px-3 file:py-2 file:font-semibold file:text-white" /></label>
           </div>
           <HowDidYouHear />
