@@ -46,10 +46,10 @@ async function mondayRequest(query, variables, token) {
 async function createMondayItem(data, config) {
   const columnValues = {
     [config.MONDAY_COLUMN_EMAIL]: emailValue(data.email),
-    [config.MONDAY_COLUMN_YEARS_OF_STUDY]: dropdownValue(data.yearsOfStudy),
-    [config.MONDAY_COLUMN_DEGREE]: dropdownValue(data.degree),
     [config.MONDAY_COLUMN_MOTIVATION]: textValue(data.motivation),
   }
+  if (data.yearsOfStudy) columnValues[config.MONDAY_COLUMN_YEARS_OF_STUDY] = dropdownValue(data.yearsOfStudy)
+  if (data.degree) columnValues[config.MONDAY_COLUMN_DEGREE] = dropdownValue(data.degree)
   if (config.MONDAY_COLUMN_HEARD_ABOUT_US) columnValues[config.MONDAY_COLUMN_HEARD_ABOUT_US] = textValue(data.heardAboutUs)
   const query = `mutation ($boardId: ID!, $groupId: String!, $itemName: String!, $columnValues: JSON!) {
     create_item(board_id: $boardId, group_id: $groupId, item_name: $itemName, column_values: $columnValues) { id }
