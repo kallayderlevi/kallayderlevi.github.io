@@ -84,8 +84,8 @@ export default function StudentsPage() {
       await submitApplicationForm(form)
       setApplicationStatus('success')
       form.reset()
-    } catch {
-      navigate('/application-error')
+    } catch (error) {
+      navigate('/application-error', { state: { message: error instanceof Error ? error.message : '' } })
     }
   }
 
